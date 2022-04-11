@@ -1,0 +1,10 @@
+<h1>Hi</h1>
+<% if (authenticated) { %>
+  <%= user.name %>
+  <form action="/logout?_method=delete" method="post">
+    <button type="submit">Log Out</button>
+  </form>
+<% } else { %>
+  <button onclick="window.location.href = '/login'">Login</button>
+  <button onclick="window.location.href = '/register'">Sign up</button>
+<% } %>
