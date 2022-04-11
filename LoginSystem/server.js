@@ -24,7 +24,7 @@ app.use(express.static("public"))
 app.use(express.urlencoded({ extended: false }))
 app.use(flash())
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: "95pHkYoPGSTgJL5boM4l",
     resave: false,
     saveUninitialized: false
 }))
