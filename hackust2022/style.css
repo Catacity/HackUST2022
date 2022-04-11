@@ -1,0 +1,302 @@
+/* For the tags (global) */
+
+*{
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 14px;
+    font-family: 'Gloria Hallelujah', Calibri;
+    background-color: antiquewhite;
+    color: black;
+}
+
+a{
+    color:rgb(70, 125, 228);
+    font-weight: bolder;
+    text-decoration: none;
+    /* none removes underline of the links */
+}
+
+h1{
+    /* for the heading tag */
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+/* Styling for the home page */
+/* the <div> blocks */
+
+.container{
+    margin: 20px;
+    padding: 23px;
+}
+
+.subforum{
+    margin-top: 20px;
+}
+
+.subforum-title{
+    background-color: #f5903ef3;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 4px;
+}
+
+.subforum-row{
+    display: grid;
+    /* Per row, how much space does _ use */
+    grid-template-columns: 6% 70% 10% 14%;
+}
+
+.about-row{
+    display: grid;
+    grid-template-columns: 6% 94%;    
+}
+
+.subforum-column{
+    padding:10px;
+    margin: 4px;
+    border-radius: 5px;
+    background: rgb(241, 217, 187);
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subforum-icon{
+    font-size: 50px;
+}
+
+.subforum-description *{
+    margin-block:0;
+    overflow: hidden;
+}
+
+.subforum-divider{
+    /* Hiding the horizontal line for desktop mode because its unnecessary for it */
+    display: none;   
+}
+
+/* mobile phone display setting */
+@media screen and (max-width:460px){
+    
+    .container{
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .subforum-row{
+        display: grid;
+        /* Per row, how much space does _ use */
+        grid-template-columns: 30% 70%;
+        grid-template-rows: 70% 30%;
+    }
+    
+    .subforum-stats{
+        font-size: 12px;
+    }
+
+    .subforum-divider{
+        display: block;
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, #f0b968b4, rgba(165, 86, 22, 0.75), #f0b968b4);  
+    }
+}
+
+/* tablet display setting */
+@media screen and (min-width: 460px) and (max-width: 1024px) {
+    .container{
+        margin: 15px;
+        padding: 27px;
+    }
+
+    .subforum-row{
+        display: grid;
+        grid-template-columns: 10% 60% 10% 20%;
+    }
+
+    .subforum-icon i{
+        font-size: 35px;
+    }
+
+    html{
+        /* Increasing font size */
+        font-size: 15px;
+    }
+
+    h1{
+        font-size: 16px;
+    }
+
+  }
+
+/* Navbar */
+.icon{
+    float: left;
+    padding-right: 20px;
+}
+
+.Account{
+    text-align: right;
+    padding-right: 50px;
+}
+
+.navbar{
+    display: grid;
+    grid-template-columns: 50% 50% 10% 15%;
+
+    display:block;
+    /*text-align: right;*/
+    font-size: 20px;
+    margin: 10px;
+    color:rgb(219, 56, 6)
+}
+
+/* Sign in/ Log in */
+.in-out-box{
+    background-color: cornsilk;
+    width:800px;
+    height:600px;
+    margin:auto;
+    margin-top:50px;
+    padding:10px;
+    padding-top: 50px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.signup-text{
+    font-size: 35px;
+}
+
+.User_Description_Box{
+    background-color: cornsilk;
+    width:800px;
+    height:600px;
+    margin:auto;
+    margin-top:50px;
+    padding:10px;
+    padding-top: 50px;
+    text-align: left;
+    border-radius: 15px;    
+}
+
+.about_user{
+    text-align: center;
+    font-size: 40px;    
+}
+/* For the forum post lists */
+.middleforum-head{
+    display: grid;
+    /* Per row, how much space does _ use */
+    grid-template-columns: 76% 10% 14%;   
+    background-color: #f0b968b4;
+}
+
+.subforum-head{
+    display: grid;
+    /* Per row, how much space does _ use */
+    grid-template-columns: 65% 11% 10% 14%;   
+    background-color: #f0b968b4;
+}
+
+.post-row{
+    display: grid;
+    /* Per row, how much space does _ use */
+    grid-template-columns: 65% 11% 10% 14%;
+}
+
+
+.post-column{
+    padding:10px;
+    margin: 4px;
+    border-radius: 5px;
+    background: rgb(241, 217, 187);
+}
+
+.post-title{
+    font-size: 15px;
+    overflow: hidden;
+}
+
+.post-author *{
+    margin-block:0;
+    overflow: hidden;
+}
+
+.post-stats{
+    font-size: 12px;
+}
+
+/* Detailed post page */
+.head{
+    display: flex;
+    background-color: #2C2C2C;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.authors{
+    flex: 20%;
+}
+
+.content{
+    flex: 80%;
+}
+
+.body{
+    display: flex;
+    background-color: #131415;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.body .authors .username{
+    font-size: 20px;
+}
+
+.body .authors img{
+    max-width: 50px;
+    max-height: 80px;
+}
+
+.body .content .comment button{
+    border:none;
+    padding:10px;
+    font-weight: bolder;
+    box-shadow: 4px 6px #fff;
+    cursor: pointer;
+    float: right;
+}
+
+/* comment section */
+.comment-area{
+    margin-bottom:50px;
+}
+
+.comment-area textarea{
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    margin-block: 10px;
+}
+
+.comment-area input{
+    float: right;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.comment-area input:hover{
+    border: solid 1px #000000;
+}
+
+
+
