@@ -12,7 +12,7 @@ class login{
         $DB = new database();
         $query = "select * from users where email = '$email'";
         $results = $DB -> write($query);
-        print_r($results);
+        #print_r($results);
 
         if ($results){
             # Putting 1st result returned from query in $row variable
@@ -29,5 +29,6 @@ class login{
         $this->error .= "Incorrect password or email!";
         return $this->error;
     }
+
 }
 

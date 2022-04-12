@@ -13,114 +13,92 @@
 
 </head>
 <body>
-    <header>
-        <div class="navigate">
-            <span><a href="">MyForum - Forums</a> >> <a href="">random subforum</a> >> <a href="">random topic</a></span>
-        </div>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>香港人嘅英文圖書館</title>
+    
+        <link rel="stylesheet" href="style.css">
+        <!--- for font awesome icons ---> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Gloria Hallelujah' rel='stylesheet'>
+    
+    </head>
 
-        <!--Topic Section-->
-        <div class="topic-container">
-            <!--Original thread-->
-            <div class="head">
-                <div class="authors">Author</div>
-                <div class="content">Topic: random topic (Read 1325 Times)</div>
+    <style>
+        .post-session{
+            min-width: 1000px;
+            min-height: 250px;
+            padding: 15px;
+            background-color: #d0e2bc;
+            font-size: 20px;
+            color: #104723;
+            border-radius: 15px;  
+            height: auto;  
+            width: auto;
+        }
+
+        .post-head{
+            font-size: 25px;
+            float:top;
+        }
+
+        .post-content{
+            color: #000000; 
+            tab-size: 2px;   
+        }
+
+        .credit{
+            text-align:right;
+        }
+
+    </style>
+
+    <body>
+        <header>
+            <div class="navbar">
+                <div class="icon">
+                    <a href= "home.html"><img src="icon.jpeg" width="250" height="100"></a>
+                </div>
+    
+                <div class = "Account">
+                    <b><a href="Login.php">Login</a></b>
+                    <b>⠀⠀⠀</b>
+                    <b><a href="SignUp.php">Sign Up</a></b>
+                </div>
+    
+                <span><a href="home.html"> Home Page </a> >> <a href="BiblioHK.html">About this forum</a></span>
+    
+            </div>  
+
+            <br><br>
+
+            <div class = "post-session">
+                <div class = "post-head"> About BiblioHK </div>
+
+<div class = "post-content" style="white-space: pre-wrap"> 
+    Welcome to BiblioHK! This forum is created in order to provide an organized platform for Hong Kongers to share their written work.In the Bibliotheca session, people's work are classified based on their word count, so that users that are less fluent in English can choose to read posts with less number of words in total if they want.
+
+    Users are highly recommended to communicate others in English, especially in the Bibliotheca session. However, such language rule / recommendation is not strictly applied in the chat room session. 
+
+    If you have any questions or you want to seek advices from others, feel free to ask a question in the chat room session! 
+</div>
+
+                <br>
+                <div class = credit>
+                    <div class = "post-stat"> Written by admin</div>
+                    <div class = "post-stat"> on 12/4/2022</div>
+                </div>
+
             </div>
 
-            <div class="body">
-                <div class="authors">
-                    <div class="username"><a href="">Username</a></div>
-                    <div>Role</div>
-                    <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="">
-                    <div>Posts: <u>45</u></div>
-                    <div>Points: <u>4586</u></div>
-                </div>
-                <div class="content">
-                    Just a random content of a random topic.
-                    <br>To see how it looks like.
-                    <br><br>
-                    Nothing more and nothing less.
-                    <br>
-                    <hr>
-                    Regards username
-                    <br>
-                    <div class="comment">
-                        <button onclick="showComment()">Comment</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <br>
 
-        <!--Comment Area-->
-        <div class="comment-area hide" id="comment-area">
-            <textarea name="comment" id="" placeholder="comment here ... "></textarea>
-            <input type="submit" value="submit">
-        </div>
+        </header>
 
-        <!--Comments Section-->
-        <div class="comments-container">
-            <div class="body">
-                <div class="authors">
-                    <div class="username"><a href="">AnotherUser</a></div>
-                    <div>Role</div>
-                    <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="">
-                    <div>Posts: <u>455</u></div>
-                    <div>Points: <u>4586</u></div>
-                </div>
-                <div class="content">
-                    Just a comment of the above random topic.
-                    <br>To see how it looks like.
-                    <br><br>
-                    Nothing more and nothing less.
-                    <br>
-                    <br>
-                    <div class="comment">
-                        <button onclick="showReply()">Reply</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Reply Area-->
-        <div class="comment-area hide" id="reply-area">
-            <textarea name="reply" id="" placeholder="reply here ... "></textarea>
-            <input type="submit" value="submit">
-        </div>
+    </body>
 
-
-        <!--Another Comment With replies-->
-        <div class="comments-container">
-            <div class="body">
-                <div class="authors">
-                    <div class="username"><a href="">AnotherUser</a></div>
-                    <div>Role</div>
-                    <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="">
-                    <div>Posts: <u>455</u></div>
-                    <div>Points: <u>4586</u></div>
-                </div>
-                <div class="content">
-                    Just a comment of the above random topic.
-                    <br>To see how it looks like.
-                    <br><br>
-                    Nothing more and nothing less.
-                    <br>
-                    <br>
-                    <div class="comment">
-                        <button onclick="showReply()">Reply</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Reply Area-->
-        <div class="comment-area hide" id="reply-area">
-            <textarea name="reply" id="" placeholder="reply here ... "></textarea>
-            <input type="submit" value="submit">
-        </div>
-
-        
-
-    </div>
-    <footer>
-        <span>&copy;  Selmi Abderrahim | All Rights Reserved</span>
-    </footer>
-    <script src="main.js"></script>
-</body>
 </html>
