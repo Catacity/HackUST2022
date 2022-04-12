@@ -19,8 +19,8 @@
         }
 
         else{
-            #header("Location: Profile.php");
-            #die;
+            header("Location: Profile.php");
+            die;
         }
 
         $email = $_POST['email'];

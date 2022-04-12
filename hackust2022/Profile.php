@@ -1,6 +1,10 @@
 <?php
     session_start();
-    #print_r($_SESSION);
+    
+    include("classes/connect.php");
+    include("classes/login.php");
+
+    if(isset($_SESSION['']))
 ?>
 
 <!DOCTYPE html>

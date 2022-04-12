@@ -65,12 +65,3 @@ class database{
         }
     }
 }
-
-#$DB = new database();
-
-#$data = $DB->read("select * from users");
-#$db->save("query");
-
-#echo "<pre>";
-#print_r($data);
-#echo "</pre>";
