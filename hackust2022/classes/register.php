@@ -27,14 +27,16 @@ class register{
         $username = $data['username'];
         $gender = $data['gender'];
         $email= $data['email'];
-        $password = $data['password'];
+        $password = $data['password']; //insert into database
+        $secret = "81xoorRZV4lGKWFZH19w";
+        $hashed_password = password_hash($password . $secret, PASSWORD_DEFAULT);
         $qualifications = $data['qualifications'];
         // We create:
         $userid = $this->create_userid();
         $profileURL = strtolower($username).".".strval($userid);
 
         $DB = new database();
-        $query= "insert into users (userid,username,gender,email,password,profileURL,qualifications) values ('$userid','$username','$gender','$email','$password','$profileURL','$qualifications')";
+        $query= "insert into users (userid,username,gender,email,password,profileURL,qualifications) values ('$userid','$username','$gender','$email','$hashed_password','$profileURL','$qualifications')";
         $DB->write($query);
     }
 
