@@ -3,7 +3,9 @@
     
     include("classes/connect.php");
     include("classes/login.php");
-    #print_r($_SESSION);
+    include("classes/utils.php");
+    // print_r(Utils::guidv4());
+    // print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>

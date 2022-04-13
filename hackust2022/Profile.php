@@ -3,10 +3,16 @@
     include("classes/connect.php");
     include("classes/users.php");
 
-    if (!isset($_SESSION['BiblioHK_pageuserid'])){
-        header("Location: home.php");
-        die;
-    }
+    // $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    // $url_components = parse_url($url);
+    // parse_str($url_components['query'], $params);
+    // $userid = $params['userid'];
+    // echo $userid;
+
+    // if (!isset($_SESSION['BiblioHK_pageuserid'])){
+    //     header("Location: home.php");
+    //     die;
+    // }
 
     $users = new User();
     
@@ -24,7 +30,7 @@
     }
 
     else{
-        # Cannot find the specified user in the database!
+        // Cannot find the specified user in the database!
         header("Location: home.php");
         die;
     }
