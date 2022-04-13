@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    
+    include("classes/connect.php");
+    include("classes/login.php");
+    #print_r($_SESSION);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +72,20 @@
                     <a href= "home.php"><img src="icon.jpeg" width="250" height="100"></a>
                 </div>
     
-                <span><a href="home.php"> Home Page </a> >> <a href="BiblioHK.html">About this forum</a></span>
+                <?php if (!isset($_SESSION['BiblioHK_userid'])): ?>
+                <div class = "Account">
+                    <b><a href="Login.php">Login</a></b>
+                    <b>⠀⠀⠀</b>
+                    <b><a href="SignUp.php">Sign Up</a></b>
+                </div>
+    
+                <?php else: ?>
+                    <div class = "Account">
+                        <b><a href="Logout.php">Log out</a></b>
+                    </div>    
+                <?php endif; ?>
+    
+                <span><a href="home.php"> Home Page </a> >> <a href="BiblioHK.php">About this forum</a></span>
     
             </div>  
 

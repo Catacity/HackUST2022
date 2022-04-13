@@ -88,11 +88,6 @@
 
         }
 
-        .mc-text{
-            font-size: 25px;
-            float:top;
-            color:#1E90FF;
-        }
     </style>
 
     <body>
@@ -133,7 +128,6 @@
 </div>
 
                 <br>
-
                 <div class = credit>
                     <div class = "post-stat">20 bookmarked</div>
                     <div class = "post-stat"> Written by admin</div>
@@ -143,73 +137,27 @@
             </div>
 
             <br>
-            <!-- MC -->
-            <div class ="comment-session">
-                <div class = "MC-text">MC</div><br>
-                <form method = "post">
-                    Q1: <br>
-                    <select id ="text" name = "Q1">
-                        <option><?php echo $Q1 ?></option>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                        <option>Option 4</option>
-                    </select>
-
-                    <br>
-
-                    Q2: <br>
-                    <select id ="text" name = "Q1">
-                        <option><?php echo $Q1 ?></option>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                        <option>Option 4</option>
-                    </select>
-
-                    <br>
-
-                    Q3: <br>
-                    <select id ="text" name = "Q1">
-                        <option><?php echo $Q1 ?></option>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                        <option>Option 4</option>
-                    </select>
-                    
-                    <br>
-
-                    Q4: <br>
-                    <select id ="text" name = "Q1">
-                        <option><?php echo $Q1 ?></option>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                        <option>Option 4</option>
-                    </select>
-
-                    <br><br>
-
-                    <input type = "submit" id = "button" value = "Submit"><br>
-
-                </form>
-            </div>
-
-            <!-- For comment : unlocked only after the user have submitted the mc answer -->
-            <!--
+            
             <div class = "post-session">
+                <div class = "post-head"> My essay</div>
 
 <div class = "post-content " style="white-space: pre-wrap"> 
     Wow this essay is boring  
     Lmao what am I even reading.
     Well tbf this is just for testing soooo lol
 </div>
-<div class = credit>
-    <div class = "post-stat"> Written by test</div>
-    <div class = "post-stat"> at 12/4/2022</div>
-</div>
 
+                <br>
+                <div class = credit>
+                    <div class = "post-stat"> Written by test</div>
+                    <div class = "post-stat"> at 12/4/2022</div>
+                </div>
+                
+            </div>
+
+
+            <br>
+            
             <div class ="comment-session center">
                 <form method = "post">
                     Comment⠀⠀: <br>
@@ -217,7 +165,7 @@
                     <input type = "submit" id = "button" value = "Submit"><br><br>
                 </form>
             </div>
-            -->
+
         </header>
 
     </body>

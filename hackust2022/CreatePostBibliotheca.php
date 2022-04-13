@@ -1,5 +1,9 @@
 <?php
-
+    session_start();
+    
+    include("classes/connect.php");
+    include("classes/login.php");
+    #print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -48,12 +52,21 @@
     <header>
         <div class="navbar">
             <div class="icon">
-                <a href= "home.html"><img src="icon.jpeg" width="250" height="100"></a>
+                <a href= "home.php"><img src="icon.jpeg" width="250" height="100"></a>
             </div>
 
-            <div class = "Account">
-                <b><a href="Login.php">Login</a></b>
-            </div>
+            <?php if (!isset($_SESSION['BiblioHK_userid'])): ?>
+                <div class = "Account">
+                    <b><a href="Login.php">Login</a></b>
+                    <b>⠀⠀⠀</b>
+                    <b><a href="SignUp.php">Sign Up</a></b>
+                </div>
+    
+                <?php else: ?>
+                    <div class = "Account">
+                        <b><a href="Logout.php">Log out</a></b>
+                    </div>    
+            <?php endif; ?>
 
         </div>   
 
