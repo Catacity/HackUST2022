@@ -68,7 +68,6 @@ class post{
             $Q4Option4 = $data['Q4Option4'];
         }
         
-        $DB = new database();
         if ($category != "chatroom"){
             $query= "insert into posts (userid,postid,category,title,content
             ,Q1question,Q1Option1,Q1Option2,Q1Option3,Q1Option4,
@@ -85,7 +84,7 @@ class post{
             $query= "insert into posts (userid,postid,category,title,content) values ('$userid','$postid','$category','$title','$content')";
         }
 
-        $DB->write($query);
+        $this->database->write($query);
 
     }
 
