@@ -83,7 +83,6 @@ class post{
     public function get_data($postid){
         $query = "select * from posts where postid = '$postid' limit 1";
         
-        $DB = new database();
         $result = $this->database->read($query);
 
         if ($result){

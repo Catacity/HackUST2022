@@ -2,11 +2,11 @@
     session_start();
     
     #print_r($_SESSION);
-    include("classes/connect.php");
-    include("classes/login.php");
-    include("classes/post.php");
-    include("classes/users.php");
-    include("classes/utils.php");
+    include_once("classes/connect.php");
+    include_once("classes/login.php");
+    include_once("classes/post.php");
+    include_once("classes/users.php");
+    include_once("classes/utils.php");
     #print_r($_SESSION);
 
     if (!isset($_SESSION['BiblioHK_postid'])){
@@ -14,7 +14,7 @@
         die;
     }
 
-    $post = new post();
+    $post = new post($database);
     
     $result = $post->get_data($_SESSION['BiblioHK_postid']);
 

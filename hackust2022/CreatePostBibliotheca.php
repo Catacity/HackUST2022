@@ -1,10 +1,10 @@
 <?php
     session_start();
     
-    include("classes/connect.php");
-    include("classes/login.php");
-    include("classes/post.php");
-    include("classes/utils.php");
+    include_once("classes/connect.php");
+    include_once("classes/login.php");
+    include_once("classes/post.php");
+    include_once("classes/utils.php");
 
     if(!isset($_SESSION['BiblioHK_userid'])){
         // User is not logged in, so redirecting user to log in page
@@ -19,7 +19,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         
         # Before clicking submit, the request method was "GET"
-        $post= new post();   
+        $post= new post($database);   
         $result = $post->validate($_POST); 
         if ($result != ""){  
             echo "<div style = 'text-align:center;font-size:12px;color:white;background-color:grey;border-radius: 15px;'>";
