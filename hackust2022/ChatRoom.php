@@ -113,7 +113,7 @@
                         $username = $users->get_data($tempid);
                     ?>
 
-                    <h1><a href="Profile.php"><?php echo $username ?></a></h1>                      
+                    <h1><a href="Profile.php"><?php echo $username['username'] ?></a></h1>                      
                 </div> 
                 <!--- item 3 in the row --->
                 <div class = "post-stats post-column center">
