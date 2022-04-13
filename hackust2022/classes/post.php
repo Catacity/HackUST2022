@@ -1,8 +1,15 @@
 <?php
 
+include_once("classes/utils.php");
+
 class post{
     private $error = "";
+    private $database;
     # Public by default anyway
+    function __construct($database) {
+        $this->database = $database;
+    }
+
     public function validate($data){
         foreach ($data as $key => $value){
             if (empty($value)){
@@ -77,7 +84,7 @@ class post{
         $query = "select * from posts where postid = '$postid' limit 1";
         
         $DB = new database();
-        $result = $DB->read($query);
+        $result = $this->database->read($query);
 
         if ($result){
             $row = $result[0];
@@ -90,3 +97,5 @@ class post{
     }
 
 }
+
+?>
