@@ -1,11 +1,11 @@
 <?php
     session_start();
     
-    include("classes/connect.php");
-    include("classes/login.php");
-    include("classes/utils.php");
-    #print_r(Utils::guidv4());
-     print_r($_SESSION);
+    include_once("classes/connect.php");
+    include_once("classes/login.php");
+    include_once("classes/utils.php");
+    // print_r(Utils::guidv4());
+    // print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>

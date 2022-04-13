@@ -1,14 +1,12 @@
 <?php
     session_start();
-    include("classes/connect.php");
-    include("classes/login.php");
+    include_once("classes/login.php");
 
     $email = "";
     $password = "";
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    # Before clicking submit, the request method was "GET"
-        $login= new login();   
+    # Before clicking submit, the request method was "GET"  
         $result = $login->validate($_POST); 
         #echo $result;
 

@@ -1,8 +1,17 @@
 <?php
 
+include_once("classes/connect.php");
+include_once("classes/utils.php");
+
 class register{
     private $error = "";
+    private $database;
     # Public by default anyway
+
+    function __construct($database) {
+        $this->database = $database;
+    }
+
     public function validate($data){
         foreach ($data as $key => $value){
             if (empty($value)){
@@ -34,10 +43,12 @@ class register{
         $userid = Utils::guidv4();
         $profileURL = strtolower($username).".".strval($userid);
 
-        $DB = new database();
         $query= "insert into users (userid,username,gender,email,password,profileURL,qualifications) values ('$userid','$username','$gender','$email','$hashed_password','$profileURL','$qualifications')";
-        $DB->write($query);
+        $this->database->write($query);
     }
     
 }
 
+$register = new register($database);
+
+?>

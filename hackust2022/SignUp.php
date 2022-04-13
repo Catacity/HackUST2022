@@ -1,7 +1,6 @@
 <?php
-    include("classes/connect.php");
-    include("classes/register.php");
-    include("classes/utils.php");
+    include_once("classes/register.php");
+    include_once("classes/utils.php");
     $username = "";
     $gender = "";
     $email = "";
@@ -9,7 +8,6 @@
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     # Before clicking submit, the request method was "GET"
-        $register= new register();   
         $result = $register->validate($_POST); 
         if ($result != ""){  
             echo "<div style = 'text-align:center;font-size:12px;color:white;background-color:grey;border-radius: 15px;'>";

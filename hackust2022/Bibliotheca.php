@@ -1,8 +1,8 @@
 <?php
     session_start();
     
-    include("classes/connect.php");
-    include("classes/login.php");
+    include_once("classes/connect.php");
+    include_once("classes/login.php");
     #print_r($_SESSION);
 ?>
 

@@ -7,7 +7,13 @@ class database{
     // so the default username and password are used
     private $username = "root";
     private $password = "";
-    private $db = "bibliohk";  
+    private $db = "bibliohk";
+
+    private $connection;
+
+    function __construct() {
+        $this->connection = $this->connect();
+    }
 
     function connect(){
         $connection = mysqli_connect($this->host,$this->username,$this->password,$this->db);
@@ -18,8 +24,7 @@ class database{
         // $query = "select * from users";
         // $result = mysqli_query($connection,$readquery); # Returns an array
         
-        $connect = $this->connect();
-        $result = mysqli_query($connect,$query); 
+        $result = mysqli_query($this->connection, $query); 
         #print_r($result);
 
         if(!$result){
@@ -39,7 +44,6 @@ class database{
             #print_r($data);
             return $data;
 
-
         }
 
     }
@@ -53,10 +57,9 @@ class database{
 
         #$readquery = "select * from users";
 
-        $connect = $this->connect();
-        $result = mysqli_query($connect,$query);   
+        $result = mysqli_query($this->connection, $query);   
     
-        echo mysqli_error($connect);
+        echo mysqli_error($this->connection);
         if ($result->num_rows == 0){
             return false;
         }
@@ -66,3 +69,7 @@ class database{
         }
     }
 }
+
+$database = new Database();
+
+?>

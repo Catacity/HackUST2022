@@ -1,15 +1,22 @@
 <?php
 
+include_once("classes/connect.php");
+
 class login{
     private $error = "";
+    private $database;
+
+    function __construct($database) {
+        $this->database = $database;
+    }
 
     public function validate($data){
         $email= addslashes($data['email']);
         $password = addslashes($data['password']);
 
-        $DB = new database();
+        // $DB = new database();
         $query = "select * from users where email = '$email'";
-        $results = $DB -> write($query);
+        $results = $this->database->write($query);
         #print_r($results);
 
         if ($results){
@@ -31,8 +38,8 @@ class login{
     public function check_login($id){
         $query = "select * from users where userid = '$id' limit 1";
 
-        $DB = new database();
-        $result = $DB -> read($query);
+        // $DB = new database();
+        $result = $this->database->read($query);
 
         if ($result){
             return true;
@@ -42,3 +49,6 @@ class login{
 
 }
 
+$login = new login($database);
+
+?>

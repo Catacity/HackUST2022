@@ -2,11 +2,17 @@
     session_start();
     include("classes/connect.php");
     include("classes/users.php");
+    // print_r($_SESSION);
 
-    // $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    // $url_components = parse_url($url);
-    // parse_str($url_components['query'], $params);
-    // $userid = $params['userid'];
+    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $url_components = parse_url($url);
+    if (array_key_exists('query', $url_components)) {
+        parse_str($url_components['query'], $params);
+        $userid = $params['userid'];
+    }
+    else {
+        $userid = $_SESSION['BiblioHK_userid'];
+    }
     // echo $userid;
 
     // if (!isset($_SESSION['BiblioHK_pageuserid'])){
