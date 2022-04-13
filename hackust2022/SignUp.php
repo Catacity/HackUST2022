@@ -1,7 +1,7 @@
 <?php
     include("classes/connect.php");
     include("classes/register.php");
-
+    include("classes/utils.php");
     $username = "";
     $gender = "";
     $email = "";

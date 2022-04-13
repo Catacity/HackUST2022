@@ -27,8 +27,8 @@ class post{
         $category = $data['category'];
         $title= $data['title'];
         $content = $data['content']; //insert into database
-        $postid = $this->create_postid();
-
+        $postid = Utils::guidv4();
+        
         if ($category != "chatroom"){
             $Q1question = $data['Q1question'];
             $Q1Option1 = $data['Q1Option1'];
@@ -82,18 +82,6 @@ class post{
         else{
             return false;
         }
-    }
-
-    private function create_postid(){
-        $len = rand(4,19);
-        $num = "";
-
-        for ($i = 0 ; $i < $len ; $i++){
-            $new_rand = rand(0,9);
-            $num = $num.$new_rand;
-        }
-
-        return $num;
     }
 
 }

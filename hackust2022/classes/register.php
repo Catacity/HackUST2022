@@ -31,25 +31,13 @@ class register{
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $qualifications = $data['qualifications'];
         // We create:
-        $userid = $this->create_userid();
+        $userid = Utils::guidv4();
         $profileURL = strtolower($username).".".strval($userid);
 
         $DB = new database();
         $query= "insert into users (userid,username,gender,email,password,profileURL,qualifications) values ('$userid','$username','$gender','$email','$hashed_password','$profileURL','$qualifications')";
         $DB->write($query);
     }
-
-    private function create_userid(){
-        $len = rand(4,19);
-        $num = "";
-
-        for ($i = 0 ; $i < $len ; $i++){
-            $new_rand = rand(0,9);
-            $num = $num.$new_rand;
-        }
-
-        return $num;
-    }
-
+    
 }
 

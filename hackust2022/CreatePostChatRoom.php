@@ -4,7 +4,8 @@
     include("classes/connect.php");
     include("classes/login.php");
     include("classes/post.php");
-
+    include("classes/utils.php");
+    
     if(!isset($_SESSION['BiblioHK_userid'])){
         // User is not logged in, so redirecting user to log in page
         header("Location: Login.php");
@@ -13,7 +14,7 @@
 
     $_POST['userid'] = $_SESSION['BiblioHK_userid'];
     $_POST['category'] = "chatroom";
-
+    $_SESSION['BiblioHK_postid'] = "";
     #print_r($_SESSION);
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){

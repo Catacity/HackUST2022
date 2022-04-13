@@ -15,8 +15,9 @@ class database{
     }
     
     function read($query){
-        # $query = "select * from users";
-        # $result = mysqli_query($connection,$readquery); # Returns an array
+        // $query = "select * from users";
+        // $result = mysqli_query($connection,$readquery); # Returns an array
+        
         $connect = $this->connect();
         $result = mysqli_query($connect,$query); 
         #print_r($result);
@@ -55,7 +56,7 @@ class database{
         $connect = $this->connect();
         $result = mysqli_query($connect,$query);   
     
-        #echo mysqli_error($connect);
+        echo mysqli_error($connect);
         if ($result->num_rows == 0){
             return false;
         }
