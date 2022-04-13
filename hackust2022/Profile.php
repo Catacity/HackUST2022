@@ -3,6 +3,11 @@
     include("classes/connect.php");
     include("classes/users.php");
 
+    if (!isset($_SESSION['BiblioHK_pageuserid']){
+        header("Location: home.php");
+        die;
+    }
+
     $users = new User();
     
     $result = $users->get_data($_SESSION['BiblioHK_pageuserid']);
@@ -18,11 +23,11 @@
         $qualifications = $result['qualifications'];
     }
 
-    #else{
-    #    # Cannot find the specified user in the database!
-    #    header("Location: home.php");
-    #    die;
-    #}
+    else{
+        # Cannot find the specified user in the database!
+        header("Location: home.php");
+        die;
+    }
 
 ?>
 
