@@ -3,7 +3,18 @@
     
     include("classes/connect.php");
     include("classes/login.php");
+    include("classes/category.php");
+    include("classes/users.php");
     #print_r($_SESSION);
+
+    $category = "chatroom";
+    $posts= new category();   
+    $result = $posts->get_data($category);
+    $users = new User();
+    $username = "";
+    #print_r($result);
+    $no_of_posts = count($result);
+    $i = 0;
 ?>
 
 <!DOCTYPE html>
@@ -86,15 +97,23 @@
                     <h1>Last reply</h1> 
                 </div>  
             </div>
+            
+            <?php while ($i < $no_of_posts): ?>
 
             <div class="post-row ">
                 <!--- item 1 in the row --->
                 <div class = "post-title subforum-column center">
-                    <a href="ChatroomPost.php">Test post title hello I'm a decently long title for testing </a>   
+                    <a href="ChatroomPost.php"><?php echo $result[$i]['title'];?></a>   
                 </div>
                 <!--- item 2 in the row --->
                 <div class= "post-author post-column">
-                    <h1><a href="Profile.php">Admin</a></h1>                      
+
+                    <?php 
+                        $tempid = $result[$i]['userid'];
+                        $username = $users->get_data($tempid);
+                    ?>
+
+                    <h1><a href="Profile.php"><?php echo $username ?></a></h1>                      
                 </div> 
                 <!--- item 3 in the row --->
                 <div class = "post-stats post-column center">
@@ -102,13 +121,13 @@
                 </div>
                 <!--- item 4 in the row --->
                 <div class= "post-info post-column">
-                    <b><a href="">Last reply</a></b> by <a href="Profile.php">Admin</a> 
+                    <b><a href="">Last reply</a></b> by <a href="Profile.php">Someone</a> 
                     <!--- The <br> tag inserts a single line break.--->
                     <br> on <small> 6/4/2022 </small>
                 </div>
-            
-            </div>           
-            
+            </div> 
+            <?php $i = $i + 1 ?>          
+            <?php endwhile; ?>
         </div>
 
     <script src="main.js"></script>

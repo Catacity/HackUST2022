@@ -3,14 +3,39 @@
     
     include("classes/connect.php");
     include("classes/login.php");
-    #print_r($_SESSION);
+    include("classes/post.php");
+    include("classes/utils.php");
 
-    if (!isset($_SESSION['BiblioHK_userid'])){
-        // Redirect to log in page
+    if(!isset($_SESSION['BiblioHK_userid'])){
+        // User is not logged in, so redirecting user to log in page
         header("Location: Login.php");
         die;
-    }
+    } 
 
+    $_POST['userid'] = $_SESSION['BiblioHK_userid'];
+    $_POST['category'] = "<100";
+    $_SESSION['BiblioHK_postid'] = "";
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        
+        # Before clicking submit, the request method was "GET"
+        $post= new post();   
+        $result = $post->validate($_POST); 
+        if ($result != ""){  
+            echo "<div style = 'text-align:center;font-size:12px;color:white;background-color:grey;border-radius: 15px;'>";
+            echo "The following error(s) have occured: <br><br>";
+            echo $result;
+            echo "</div>";
+        }
+
+        #print_r($_SESSION);
+        else{
+            header("Location: ChatroomPost.php");
+            die;
+        }
+        
+    }  
+     
 ?>
 
 <!DOCTYPE html>
