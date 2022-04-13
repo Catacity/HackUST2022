@@ -29,10 +29,11 @@
         }
 
         #print_r($_SESSION);
-        else{
-            header("Location: ChatroomPost.php");
-            die;
-        }
+        #print_r($_POST);
+        // else{
+        //     header("Location: BibliothecaPost.php");
+        //     die;
+        // }
         
     }  
      
@@ -107,72 +108,72 @@
 
     <div class ="post-creation-box">
         <div class = "signup-text">Create a forum post</div><br>
-            <form method="post" action = "ChatroomPost.html"> <!---destination when submit --->
+            <form method="post"> <!--- action = "BibliothecaPost.php"> destination when submit --->
 
                 Title:<br>
-                <textarea class ="title" id = "title-box" placeholder="Title of your forum post" ></textarea><br><br>
+                <textarea name ="title" class ="title" id = "title-box" placeholder="Title of your forum post" ></textarea><br><br>
                 
                 Content:<br>
-                    <textarea class ="content" id = "content-box" placeholder="Write here!" ></textarea><br><br>
+                    <textarea name ="content" class ="content" id = "content-box" placeholder="Write here!" ></textarea><br><br>
 
                 <br><br>
 
                 MC Questions you set for the readers (use this to collect information regarding how the user thinks about certain things of your writing): <br>
                 <div class = "question"> Q1:<br> </div>
-                <textarea class ="title" id = "title-box" placeholder="Question 1" ></textarea><br><br>
+                <textarea name ="Q1question" class ="title" id = "title-box" placeholder="Question 1" ></textarea><br><br>
 
                 <div class = "question"> Choice 1:<br> </div>
-                <textarea class ="title" id = "title-box" placeholder="Choice 1" ></textarea><br><br>
+                <textarea name = "Q1Option1" class ="title" id = "title-box" placeholder="Choice 1" ></textarea><br><br>
                 <div class = "question"> Choice 2:<br> </div>
-                <textarea class ="title" id = "title-box" placeholder="Choice 2" ></textarea><br><br>
+                <textarea name = "Q1Option2" class ="title" id = "title-box" placeholder="Choice 2" ></textarea><br><br>
                 <div class = "question"> Choice 3:<br> </div>
-                <textarea class ="title" id = "title-box" placeholder="Choice 3" ></textarea><br><br>
+                <textarea name = "Q1Option3" class ="title" id = "title-box" placeholder="Choice 3" ></textarea><br><br>
                 <div class = "question"> Choice 4:<br> </div>
-                <textarea class ="title" id = "title-box" placeholder="Choice 4" ></textarea><br><br>
+                <textarea name = "Q1Option4" class ="title" id = "title-box" placeholder="Choice 4" ></textarea><br><br>
 
                 <br><br>
 
                 <div class = "question"> Q2:<br> </div>
-                <textarea class ="title" id = "title-box" placeholder="Question 1" ></textarea><br><br>
+                <textarea name ="Q2question" class ="title" id = "title-box" placeholder="Question 1" ></textarea><br><br>
 
                 <div class = "question"> Choice 1:<br> </div>
-                <textarea class ="title" id = "title-box" placeholder="Choice 1" ></textarea><br><br>
+                <textarea name = "Q2Option1" class ="title" id = "title-box" placeholder="Choice 1" ></textarea><br><br>
                 <div class = "question"> Choice 2:<br> </div>
-                <textarea class ="title" id = "title-box" placeholder="Choice 2" ></textarea><br><br>
+                <textarea name = "Q2Option2"class ="title" id = "title-box" placeholder="Choice 2" ></textarea><br><br>
                 <div class = "question"> Choice 3:<br> </div>
-                <textarea class ="title" id = "title-box" placeholder="Choice 3" ></textarea><br><br>
+                <textarea name = "Q2Option3" class ="title" id = "title-box" placeholder="Choice 3" ></textarea><br><br>
                 <div class = "question"> Choice 4:<br> </div>
-                <textarea class ="title" id = "title-box" placeholder="Choice 4" ></textarea><br><br>
+                <textarea name = "Q2Option4" class ="title" id = "title-box" placeholder="Choice 4" ></textarea><br><br>
 
                     <br><br>
 
                 <div class = "question"> Q3:<br> </div>
-                <textarea class ="title" id = "title-box" placeholder="Question 1" ></textarea><br><br>
+                <textarea name ="Q3question" class ="title" id = "title-box" placeholder="Question 1" ></textarea><br><br>
 
                 <div class = "question"> Choice 1:<br> </div>
-                <textarea class ="title" id = "title-box" placeholder="Choice 1" ></textarea><br><br>
+                <textarea name = "Q3Option1" class ="title" id = "title-box" placeholder="Choice 1" ></textarea><br><br>
                 <div class = "question"> Choice 2:<br> </div>
-                <textarea class ="title" id = "title-box" placeholder="Choice 2" ></textarea><br><br>
+                <textarea name = "Q3Option2" class ="title" id = "title-box" placeholder="Choice 2" ></textarea><br><br>
                 <div class = "question"> Choice 3:<br> </div>
-                <textarea class ="title" id = "title-box" placeholder="Choice 3" ></textarea><br><br>
+                <textarea name = "Q3Option3" class ="title" id = "title-box" placeholder="Choice 3" ></textarea><br><br>
                 <div class = "question"> Choice 4:<br> </div>
-                <textarea class ="title" id = "title-box" placeholder="Choice 4" ></textarea><br><br>
+                <textarea name = "Q3Option4" class ="title" id = "title-box" placeholder="Choice 4" ></textarea><br><br>
 
                 <br><br>
 
                 <div class = "question"> Q4:<br> </div>
-                    <textarea class ="title" id = "title-box" placeholder="Question 1" ></textarea><br><br>
+                <textarea name ="Q4question" class ="title" id = "title-box" placeholder="Question 1" ></textarea><br><br>
 
-                    <div class = "question"> Choice 1:<br> </div>
-                    <textarea class ="title" id = "title-box" placeholder="Choice 1" ></textarea><br><br>
-                    <div class = "question"> Choice 2:<br> </div>
-                    <textarea class ="title" id = "title-box" placeholder="Choice 2" ></textarea><br><br>
-                    <div class = "question"> Choice 3:<br> </div>
-                    <textarea class ="title" id = "title-box" placeholder="Choice 3" ></textarea><br><br>
-                    <div class = "question"> Choice 4:<br> </div>
-                    <textarea class ="title" id = "title-box" placeholder="Choice 4" ></textarea><br><br>
+                <div class = "question"> Choice 1:<br> </div>
+                <textarea name = "Q4Option1" class ="title" id = "title-box" placeholder="Choice 1" ></textarea><br><br>
+                <div class = "question"> Choice 2:<br> </div>
+                <textarea name = "Q4Option2" class ="title" id = "title-box" placeholder="Choice 2" ></textarea><br><br>
+                <div class = "question"> Choice 3:<br> </div>
+                <textarea name = "Q4Option3" class ="title" id = "title-box" placeholder="Choice 3" ></textarea><br><br>
+                <div class = "question"> Choice 4:<br> </div>
+                <textarea name = "Q4Option4" class ="title" id = "title-box" placeholder="Choice 4" ></textarea><br><br>
 
-                    <br><br>
+                <br><br>
 
                 <input type = "submit" id = "button" value = "Create forum post"><br><br>
                 
