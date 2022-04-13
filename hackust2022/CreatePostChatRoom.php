@@ -13,12 +13,14 @@
 
     $_POST['userid'] = $_SESSION['BiblioHK_userid'];
     $_POST['category'] = "chatroom";
+
+    #print_r($_SESSION);
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        #print_r($_POST);
         
         # Before clicking submit, the request method was "GET"
-        $register= new post();   
-        $result = $register->validate($_POST); 
+        $post= new post();   
+        $result = $post->validate($_POST); 
         if ($result != ""){  
             echo "<div style = 'text-align:center;font-size:12px;color:white;background-color:grey;border-radius: 15px;'>";
             echo "The following error(s) have occured: <br><br>";
@@ -27,7 +29,7 @@
         }
 
         else{
-            header("Location: CreatePostChatRoom.php");
+            header("Location: ChatroomPost.php");
             die;
         }
         
@@ -99,7 +101,7 @@
 
     <div class ="post-creation-box">
         <div class = "signup-text">Create a forum post</div><br>
-            <form method="post" action = "ChatroomPost.php">
+            <form method="post" action ="ChatroomPost.php">
 
                 Title:<br>
                 <textarea name ="title" class ="title" id = "title-box" placeholder="Title of your forum post" ></textarea><br><br>

@@ -80,7 +80,7 @@
                 </div>
                 <!--- item 2 in the row --->
                 <div class= "subforum-description subforum-column">
-                    <h1><a href="Bibliotheca.html">Share your masterpiece and read other's work here!</a></h1>                        
+                    <h1><a href="Bibliotheca.php">Share your masterpiece and read other's work here!</a></h1>                        
                     <p>The more the merrier! Please don't forget to comment on other people's work to let them know how they can improve! :)</p>
                 </div> 
                 <!--- item 3 in the row --->
@@ -105,7 +105,7 @@
                 </div>
                 <!--- item 2 in the row --->
                 <div class= "subforum-description subforum-column">
-                    <h1><a href="Recommendations.html">Recommended reading of the week</a></h1>                        
+                    <h1><a href="Recommendations.php">Recommended reading of the week</a></h1>                        
                     <p>Here are the top few posts being bookmarked the most this week!</p>
                 </div> 
                 <!--- item 3 in the row --->
