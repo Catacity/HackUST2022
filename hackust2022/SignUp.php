@@ -1,6 +1,5 @@
 <?php
     include_once("classes/register.php");
-    include_once("classes/utils.php");
     $username = "";
     $gender = "";
     $email = "";
