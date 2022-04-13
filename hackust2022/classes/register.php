@@ -28,7 +28,8 @@ class register{
         $gender = $data['gender'];
         $email= $data['email'];
         $password = $data['password']; //insert into database
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $secret = "81xoorRZV4lGKWFZH19w";
+        $hashed_password = password_hash($password . $secret, PASSWORD_DEFAULT);
         $qualifications = $data['qualifications'];
         // We create:
         $userid = $this->create_userid();

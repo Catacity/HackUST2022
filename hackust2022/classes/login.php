@@ -6,6 +6,8 @@ class login{
     public function validate($data){
         $email= addslashes($data['email']);
         $password = addslashes($data['password']);
+        $secret = "81xoorRZV4lGKWFZH19w";
+        $hashed_password = password_hash($password . $secret, PASSWORD_DEFAULT);
 
         $DB = new database();
         $query = "select * from users where email = '$email'";
@@ -15,7 +17,8 @@ class login{
         if ($results){
             # Putting 1st result returned from query in $row variable
             $row = mysqli_fetch_assoc($results);
-            if (password_verify($password, $row['password'])){ //verification
+
+            if ($hashed_password == $row['password']){ //verification
                 
                 # This is a global variable that is available across the whole website
                 $_SESSION['BiblioHK_userid'] = $row['userid'];
