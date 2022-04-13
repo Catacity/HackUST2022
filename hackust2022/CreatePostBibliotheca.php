@@ -4,6 +4,13 @@
     include("classes/connect.php");
     include("classes/login.php");
     #print_r($_SESSION);
+
+    if (!isset($_SESSION['BiblioHK_userid'])){
+        // Redirect to log in page
+        header("Location: Login.php");
+        die;
+    }
+
 ?>
 
 <!DOCTYPE html>

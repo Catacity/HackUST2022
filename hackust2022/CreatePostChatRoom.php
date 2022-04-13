@@ -3,7 +3,37 @@
     
     include("classes/connect.php");
     include("classes/login.php");
+    include("classes/post.php");
     #print_r($_SESSION);
+
+    if(!isset($_SESSION['BiblioHK_userid'])){
+        // User is not logged in, so redirecting user to log in page
+        header("Location: Login.php");
+        die;
+    } 
+
+    $_POST['userid'] = $_SESSION['BiblioHK_userid'];
+    $_POST['category'] = "chatroom";
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        print_r($_POST);
+        /*
+        # Before clicking submit, the request method was "GET"
+        $register= new post();   
+        $result = $register->validate($_POST); 
+        if ($result != ""){  
+            echo "<div style = 'text-align:center;font-size:12px;color:white;background-color:grey;border-radius: 15px;'>";
+            echo "The following error(s) have occured: <br><br>";
+            echo $result;
+            echo "</div>";
+        }
+
+        else{
+            header("Location: CreatePostChatRoom.php");
+            die;
+        }
+        */
+    }  
+     
 ?>
 
 <!DOCTYPE html>
@@ -70,17 +100,16 @@
 
     <div class ="post-creation-box">
         <div class = "signup-text">Create a forum post</div><br>
-            <form method="post" action = "ChatroomPost.html">
+            <form method="post" action = "CreatePostChatRoom.php">
 
                 Title:<br>
-                <textarea class ="title" id = "title-box" placeholder="Title of your forum post" ></textarea><br><br>
+                <textarea class ="title"  id = "title-box" placeholder="Title of your forum post" ><?php echo isset($_POST['title']) ? $title : '';?></textarea><br><br>
                 
                 Content:<br>
-                    <textarea class ="content" id = "content-box" placeholder="Write here!" ></textarea><br><br>
+                    <textarea class ="content" id = "content-box" placeholder="Write here!" ><?php echo isset($_POST['content']) ? $content : '';?></textarea><br><br>
 
                 <input type = "submit" id = "button" value = "Create forum post"><br><br>
                 
-
             </form>
     </div>
    

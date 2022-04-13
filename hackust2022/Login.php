@@ -61,7 +61,7 @@
     <header>
         <div class="navbar">
             <div class="icon">
-                <a href= "home.html"><img src="icon.jpeg" width="250" height="100"></a>
+                <a href= "home.php"><img src="icon.jpeg" width="250" height="100"></a>
             </div>
 
             <div class = "Account">

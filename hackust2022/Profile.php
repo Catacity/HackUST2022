@@ -3,7 +3,7 @@
     include("classes/connect.php");
     include("classes/users.php");
 
-    if (!isset($_SESSION['BiblioHK_pageuserid']){
+    if (!isset($_SESSION['BiblioHK_pageuserid'])){
         header("Location: home.php");
         die;
     }
