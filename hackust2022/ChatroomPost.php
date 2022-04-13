@@ -3,7 +3,56 @@
     
     include("classes/connect.php");
     include("classes/login.php");
+    include("classes/post.php");
+    include("classes/users.php");
+
     #print_r($_SESSION);
+
+    if (!isset($_SESSION['BiblioHK_postid'])){
+        header("Location: home.php");
+        die;
+    }
+
+    $post = new post();
+    
+    $result = $post->get_data($_SESSION['BiblioHK_postid']);
+
+    $title = "";
+    $content = "";
+    $userid = "";
+    $date = "";
+
+    if ($result){
+        # post exist
+        $title = $result['title'];
+        $content = $result['content'];
+        $userid = $result['userid'];
+        $date = $result['date'];
+
+        $user = new User();
+        $findname = $user->get_data($userid);
+
+        $username = "";
+    
+        if ($findname){
+            # User exist
+            $username = $findname['username'];
+        }
+    
+        else{
+            # Cannot find the specified user in the database!
+            header("Location: home.php");
+            die;
+        }
+
+    }
+
+    else{
+        # Cannot find the specified user in the database!
+        header("Location: home.php");
+        die;
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -117,21 +166,17 @@
             <br><br>
 
             <div class = "post-session">
-                <div class = "post-head"> My essay</div>
+                <div class = "post-head"> <?php echo $result['title'];?> </div>
 
 <div class = "post-content " style="white-space: pre-wrap"> 
-    This is some random text for testing This is some random text for testing  This is some random text for testing This is some random text for testing 
-    This is some random text for testing This is some random text for testing    This is some random text for testing This is some random text for testing   This is some random text for testing This is some random text for testing 
-    This is some random text for testing This is some random text for testing  This is some random text for testing This is some random text for testing  This is some random text for testing This is some random text for testing 
-    This is some random text for testing This is some random text for testing  This is some random text for testing This is some random text for testing  This is some random text for testing This is some random text for testing  This is some random text for testing This is some random text for testing 
-    This is some random text for testing This is some random text for testing  This is some random text for testing This is some random text for testing  This is some random text for testing This is some random text for testing   
+    <?php echo $result['content'];?>
 </div>
 
                 <br>
                 <div class = credit>
                     <div class = "post-stat">20 bookmarked</div>
-                    <div class = "post-stat"> Written by admin</div>
-                    <div class = "post-stat"> at 12/4/2022</div>
+                    <div class = "post-stat"> Written by <?php echo $findname['username'];?></div>
+                    <div class = "post-stat"> at <?php echo $result['date'];?></div>
                 </div>
 
             </div>

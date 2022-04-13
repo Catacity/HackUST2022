@@ -11,8 +11,11 @@ class post{
         }
 
         if ($this->error == ""){
-            $this->create_post($data);
+            $postid = $this->create_post($data);
+            $_SESSION['BiblioHK_postid'] = $postid;
+            return;
         }
+
         else{
             return $this->error;
         }
@@ -24,6 +27,7 @@ class post{
         $category = $data['category'];
         $title= $data['title'];
         $content = $data['content']; //insert into database
+        $postid = $this->create_postid();
 
         if ($category != "chatroom"){
             $Q1question = $data['Q1question'];
@@ -53,12 +57,43 @@ class post{
         
         $DB = new database();
         if ($category != "chatroom"){
-            $query= "insert into posts (userid,category,title,content,Q1question,Q1Option1,Q1Option2,Q1Option3,Q1Option4,Q2question,Q2Option1,Q2Option2,Q2Option3,Q2Option4,Q3question,Q3Option1,Q3Option2,Q3Option3,Q3Option4,Q4question,Q4Option1,Q4Option2,Q4Option3,Q4Option4) values ('$userid','$category','$title','$content','$Q1question','$Q1Option1','$Q1Option2','$Q1Option3','$Q1Option4','$Q2question','$Q2Option1','$Q2Option2','$Q2Option3','$Q2Option4','$Q3question','$Q3Option1','$Q3Option2','$Q3Option3','$Q3Option4','$Q4question','$Q4Option1','$Q4Option2','$Q4Option3','$Q4Option4')";
+            $query= "insert into posts (userid,postid,category,title,content,Q1question,Q1Option1,Q1Option2,Q1Option3,Q1Option4,Q2question,Q2Option1,Q2Option2,Q2Option3,Q2Option4,Q3question,Q3Option1,Q3Option2,Q3Option3,Q3Option4,Q4question,Q4Option1,Q4Option2,Q4Option3,Q4Option4) values ('$userid','$postid','$category','$title','$content','$Q1question','$Q1Option1','$Q1Option2','$Q1Option3','$Q1Option4','$Q2question','$Q2Option1','$Q2Option2','$Q2Option3','$Q2Option4','$Q3question','$Q3Option1','$Q3Option2','$Q3Option3','$Q3Option4','$Q4question','$Q4Option1','$Q4Option2','$Q4Option3','$Q4Option4')";
         }
         else{
-            $query= "insert into posts (userid,category,title,content) values ('$userid','$category','$title','$content','$Q1question')";
+            $query= "insert into posts (userid,postid,category,title,content) values ('$userid','$postid','$category','$title','$content')";
         }
 
         $DB->write($query);
+
+        return $postid;
     }
+
+    public function get_data($postid){
+        $query = "select * from posts where postid = '$postid' limit 1";
+        
+        $DB = new database();
+        $result = $DB->read($query);
+
+        if ($result){
+            $row = $result[0];
+            return $row;
+        }
+
+        else{
+            return false;
+        }
+    }
+
+    private function create_postid(){
+        $len = rand(4,19);
+        $num = "";
+
+        for ($i = 0 ; $i < $len ; $i++){
+            $new_rand = rand(0,9);
+            $num = $num.$new_rand;
+        }
+
+        return $num;
+    }
+
 }
