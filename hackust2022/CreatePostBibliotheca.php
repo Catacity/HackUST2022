@@ -28,7 +28,7 @@
             echo "</div>";
         }
 
-        #print_r($_SESSION);
+        print_r($result);
         #print_r($_POST);
         // else{
         //     header("Location: BibliothecaPost.php");

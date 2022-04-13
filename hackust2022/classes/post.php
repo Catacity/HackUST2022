@@ -70,7 +70,16 @@ class post{
         
         $DB = new database();
         if ($category != "chatroom"){
-            $query= "insert into posts (userid,postid,category,title,content,Q1question,Q1Option1,Q1Option2,Q1Option3,Q1Option4,Q2question,Q2Option1,Q2Option2,Q2Option3,Q2Option4,Q3question,Q3Option1,Q3Option2,Q3Option3,Q3Option4,Q4question,Q4Option1,Q4Option2,Q4Option3,Q4Option4) values ('$userid','$postid','$category','$title','$content','$Q1question','$Q1Option1','$Q1Option2','$Q1Option3','$Q1Option4','$Q2question','$Q2Option1','$Q2Option2','$Q2Option3','$Q2Option4','$Q3question','$Q3Option1','$Q3Option2','$Q3Option3','$Q3Option4','$Q4question','$Q4Option1','$Q4Option2','$Q4Option3','$Q4Option4')";
+            $query= "insert into posts (userid,postid,category,title,content
+            ,Q1question,Q1Option1,Q1Option2,Q1Option3,Q1Option4,
+            Q2question,Q2Option1,Q2Option2,Q2Option3,Q2Option4,
+            Q3question,Q3Option1,Q3Option2,Q3Option3,Q3Option4,
+            Q4question,Q4Option1,Q4Option2,Q4Option3,Q4Option4) 
+            values ('$userid','$postid','$category','$title','$content',
+            '$Q1question','$Q1Option1','$Q1Option2','$Q1Option3','$Q1Option4',
+            '$Q2question','$Q2Option1','$Q2Option2','$Q2Option3','$Q2Option4',
+            '$Q3question','$Q3Option1','$Q3Option2','$Q3Option3','$Q3Option4',
+            '$Q4question','$Q4Option1','$Q4Option2','$Q4Option3','$Q4Option4')";
         }
         else{
             $query= "insert into posts (userid,postid,category,title,content) values ('$userid','$postid','$category','$title','$content')";
