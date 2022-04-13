@@ -1,11 +1,12 @@
 <?php
     session_start();
     
+    #print_r($_SESSION);
     include("classes/connect.php");
     include("classes/login.php");
     include("classes/post.php");
     include("classes/users.php");
-
+    include("classes/utils.php");
     #print_r($_SESSION);
 
     if (!isset($_SESSION['BiblioHK_postid'])){
@@ -47,11 +48,11 @@
 
     }
 
-    else{
-        # Cannot find the specified user in the database!
-        header("Location: home.php");
-        die;
-    }
+    // else{
+    //     # Cannot find the specified user in the database!
+    //     header("Location: home.php");
+    //     die;
+    // }
 
 ?>
 

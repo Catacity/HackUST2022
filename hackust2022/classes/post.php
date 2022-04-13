@@ -11,8 +11,8 @@ class post{
         }
 
         if ($this->error == ""){
-            $postid = $this->create_post($data);
-            $_SESSION['BiblioHK_postid'] = $postid;
+         
+            $this->create_post($data);
             return;
         }
 
@@ -23,11 +23,17 @@ class post{
     }
 
     public function create_post($data){
+  
         $userid = $data['userid'];
         $category = $data['category'];
+
         $title= $data['title'];
         $content = $data['content']; //insert into database
+    
         $postid = Utils::guidv4();
+
+        $_SESSION['BiblioHK_postid'] = $postid;
+        #echo $_SESSION['BiblioHK_postid'];
         
         if ($category != "chatroom"){
             $Q1question = $data['Q1question'];
@@ -49,10 +55,10 @@ class post{
             $Q3Option4 = $data['Q3Option4'];
 
             $Q4question = $data['Q4question'];
-            $Q4Option1 = $data['Q3Option1'];
-            $Q4Option2 = $data['Q3Option2'];
-            $Q4Option3 = $data['Q3Option3'];
-            $Q4Option4 = $data['Q3Option4'];
+            $Q4Option1 = $data['Q4Option1'];
+            $Q4Option2 = $data['Q4Option2'];
+            $Q4Option3 = $data['Q4Option3'];
+            $Q4Option4 = $data['Q4Option4'];
         }
         
         $DB = new database();
@@ -65,7 +71,6 @@ class post{
 
         $DB->write($query);
 
-        return $postid;
     }
 
     public function get_data($postid){

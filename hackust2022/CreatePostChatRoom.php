@@ -5,7 +5,7 @@
     include("classes/login.php");
     include("classes/post.php");
     include("classes/utils.php");
-    
+
     if(!isset($_SESSION['BiblioHK_userid'])){
         // User is not logged in, so redirecting user to log in page
         header("Location: Login.php");
@@ -15,7 +15,6 @@
     $_POST['userid'] = $_SESSION['BiblioHK_userid'];
     $_POST['category'] = "chatroom";
     $_SESSION['BiblioHK_postid'] = "";
-    #print_r($_SESSION);
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         
@@ -29,6 +28,7 @@
             echo "</div>";
         }
 
+        #print_r($_SESSION);
         else{
             header("Location: ChatroomPost.php");
             die;
@@ -102,7 +102,7 @@
 
     <div class ="post-creation-box">
         <div class = "signup-text">Create a forum post</div><br>
-            <form method="post" action ="ChatroomPost.php">
+            <form method="post">
 
                 Title:<br>
                 <textarea name ="title" class ="title" id = "title-box" placeholder="Title of your forum post" ></textarea><br><br>
