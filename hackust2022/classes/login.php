@@ -19,25 +19,12 @@ class login{
                 
                 # This is a global variable that is available across the whole website
                 $_SESSION['BiblioHK_userid'] = $row['userid'];
-                $_SESSION['BiblioHK_pageuserid'] = $row['userid'];
                 return;
             }
         }
 
         $this->error .= "Incorrect password or email!";
         return $this->error;
-    }
-
-    public function check_login($id){
-        $query = "select * from users where userid = '$id' limit 1";
-
-        $DB = new database();
-        $result = $DB -> read($query);
-
-        if ($result){
-            return true;
-        }
-        return false;
     }
 
 }

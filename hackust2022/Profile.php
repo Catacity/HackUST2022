@@ -1,29 +1,10 @@
 <?php
     session_start();
-    include("classes/connect.php");
-    include("classes/users.php");
-
-    $users = new User();
     
-    $result = $users->get_data($_SESSION['BiblioHK_pageuserid']);
+    include("classes/connect.php");
+    include("classes/login.php");
 
-    $username = "";
-    $gender = "";
-    $qualifications = "";
-
-    if ($result){
-        # User exist
-        $username = $result['username'];
-        $gender = $result['gender'];
-        $qualifications = $result['qualifications'];
-    }
-
-    #else{
-    #    # Cannot find the specified user in the database!
-    #    header("Location: home.php");
-    #    die;
-    #}
-
+    if(isset($_SESSION['']))
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +25,7 @@
     <header>
         <div class="navbar">
             <div class="icon">
-                <a href= "home.php"><img src="icon.jpeg" width="250" height="100"></a>
+                <a href= "home.html"><img src="icon.jpeg" width="250" height="100"></a>
             </div>
 
         </div>   
@@ -53,10 +34,11 @@
     </header>
 
     <div class ="User_Description_Box">
-        <div class = "about_user">About <?php echo $result['username'];?></div><br>
-        Username : <?php echo $result['username'];?><br><br>
-        Gender : <?php echo $result['gender'];?><br><br>
-        Education/Qualitifcations⠀: <?php echo $result['qualifications'];?><br><br>
+        <div class = "about_user">About Username</div><br>
+        Username :Username<br><br>
+        Gender :male<br><br>
+        Education/Qualitifcations⠀: University Year 2 ⠀⠀⠀⠀⠀<br><br>
+        User Description : Hello I'm testing <br><br>
     </div>
 
     <script src="main.js"></script>

@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include("classes/connect.php");
     include("classes/login.php");
 
@@ -20,7 +19,6 @@
         }
 
         else{
-            #print_r ($_SESSION);
             header("Location: Profile.php");
             die;
         }

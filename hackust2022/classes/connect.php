@@ -19,7 +19,7 @@ class database{
         # $result = mysqli_query($connection,$readquery); # Returns an array
         $connect = $this->connect();
         $result = mysqli_query($connect,$query); 
-        #print_r($result);
+        print_r($result);
 
         if(!$result){
             return false;
@@ -35,7 +35,7 @@ class database{
                 $data[] = $row;     # Appends $row's data to the data array
             }
 
-            #print_r($data);
+            print_r($data);
             return $data;
 
 
