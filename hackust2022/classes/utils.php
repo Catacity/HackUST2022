@@ -15,8 +15,17 @@ class Utils {
         return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
     }
 
-    public function getLatestPostUrlAndAuthorID($database) {
+    public static function getCurrentUrl() {
+        return (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    }
 
+    public function getLastPostIdAndAuthorId($database) {
+        $postIdAndAuthorId = array();
+        $query = "SELECT TOP 1 * FROM bibliohk.posts ORDER BY date DESC;";
+        $result = $database.read($query);
+        $postAndAuthorUrl["postid"] = $result['postid'];
+        $postAndAuthorUrl["userid"] = $result['userid'];
+        return $postIdAndAuthorId;
     }
 }
 

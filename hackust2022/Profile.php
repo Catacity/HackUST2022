@@ -1,11 +1,12 @@
 <?php
     session_start();
-    include("classes/connect.php");
-    include("classes/users.php");
+    include_once("classes/connect.php");
+    include_once("classes/users.php");
+    include_once("classes/utils.php");
     // print_r($_SESSION);
 
-    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    $url_components = parse_url($url);
+    // echo Utils::getCurrentUrl();
+    $url_components = parse_url(Utils::getCurrentUrl());
     if (array_key_exists('query', $url_components)) {
         parse_str($url_components['query'], $params);
         $userid = $params['userid'];
