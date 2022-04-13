@@ -70,7 +70,7 @@
             </div>
             <!--- item 2 in the row --->
             <div class= "subforum-description subforum-column">
-                <h1><a href="">Less than 100 words</a></h1>                        
+                <h1><a href="lessthan100.php">Less than 100 words</a></h1>                        
             </div> 
             <!--- item 3 in the row --->
             <div class = "subforum-stats subforum-column center">
