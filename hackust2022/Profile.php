@@ -8,13 +8,15 @@
     // echo Utils::getCurrentUrl();
     $url_components = parse_url(Utils::getCurrentUrl());
     if (array_key_exists('query', $url_components)) {
+        // Url parameters exist
         parse_str($url_components['query'], $params);
         $userid = $params['userid'];
     }
     else {
+        // Default value
         $userid = $_SESSION['BiblioHK_userid'];
     }
-    // echo $userid;
+    echo $userid;
 
     // if (!isset($_SESSION['BiblioHK_pageuserid'])){
     //     header("Location: home.php");
@@ -23,7 +25,7 @@
 
     $users = new User();
     
-    $result = $users->get_data($_SESSION['BiblioHK_pageuserid']);
+    $result = $users->get_data($userid);
 
     $username = "";
     $gender = "";
@@ -36,11 +38,11 @@
         $qualifications = $result['qualifications'];
     }
 
-    else{
-        // Cannot find the specified user in the database!
-        header("Location: home.php");
-        die;
-    }
+    // else{
+    //     // Cannot find the specified user in the database!
+    //     header("Location: home.php");
+    //     die;
+    // }
 
 ?>
 
