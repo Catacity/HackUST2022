@@ -1,10 +1,12 @@
 <?php
     // Logging out
     session_start();
+    include_once("classes/connect.php");
     include_once("classes/utils.php");
+    include_once("classes/post.php");
     
     $category = "bookmark";
-    $last_post_n_user = utils.getLastPostIdAndAuthorId($database,$category);
+    $last_post_n_user = $utils->getLastPostIdAndAuthorId($database,$category);
     $_SESSION['BiblioHK_pageuserid'] = $last_post_n_user["userid"];
     $_SESSION['BiblioHK_postid'] = $last_post_n_user["postid"];
 
