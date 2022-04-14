@@ -44,6 +44,7 @@ class Utils {
             case "<1500":
             case "<2000":
             case ">=2000":
+            case "chatroom":
                 $query .= " WHERE category = \"{$category}\"";
                 break;
             case "bibliotheca":
