@@ -131,8 +131,9 @@ class Utils {
 
     public function bookmark($postid, $userid) {
         $bookmarked = $this->getBookmarked($postid, $userid);
+        $value = 1-$bookmarked;
         $query = "UPDATE bibliohk.postuserinfo 
-            SET bookmarked = {1-$bookmarked} 
+            SET bookmarked = {$value} 
             WHERE postid = \"{$postid}\" AND userid = \"{$userid}\";";
         $this->database->write($query);
     }
