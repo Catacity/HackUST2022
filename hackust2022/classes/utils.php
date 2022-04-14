@@ -28,8 +28,7 @@ class Utils {
     }
 
     public function getLastPostIdAndAuthorId($category = "default") {
-        $postIdAndAuthorId = array();
-        $query = "SELECT TOP 1 postid, userid FROM bibliohk.posts";
+        $query = "SELECT postid, userid FROM bibliohk.posts";
         switch ($category) {
             case "<100":
             case "<200":
@@ -55,17 +54,18 @@ class Utils {
                 // exclude chatroom
                 // top 10 bookmark
                 $query .= " WHERE category != \"chatroom\" AND postid IN (
-                    SELECT TOP 10 postid FROM bibliohk.postuserinfo
+                    SELECT postid FROM bibliohk.postuserinfo
                     WHERE bookmarked = 1
                     GROUP BY postid
-                    ORDER BY COUNT(userid) DESC)";
+                    ORDER BY COUNT(userid) DESC LIMIT 10)";
                 break;
             default:
                 break;
         }
-        $query .= " ORDER BY date DESC;";
+        $query .= " ORDER BY date DESC LIMIT 1;";
         $result = $this->database->read($query);
         if ($result) {
+            $postIdAndAuthorId = array();
             $postAndAuthorUrl["postid"] = $result[0]['postid'];
             $postAndAuthorUrl["userid"] = $result[0]['userid'];
             return $postIdAndAuthorId;
