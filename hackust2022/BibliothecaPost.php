@@ -131,6 +131,9 @@
             $Q2Ans = $_POST['Q2'];
             $Q3Ans = $_POST['Q3'];
             $Q4Ans = $_POST['Q4'];
+
+            header("Location: BibliothecaPost.php");
+            die;
     
         }
     }
