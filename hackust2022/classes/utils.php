@@ -64,10 +64,15 @@ class Utils {
         }
         $query .= " ORDER BY date DESC LIMIT 1;";
         $result = $this->database->read($query);
+
+        #echo $query;
+        #echo $result;
+        #print_r($result);
         if ($result) {
             $postIdAndAuthorId = array();
-            $postAndAuthorUrl["postid"] = $result[0]['postid'];
-            $postAndAuthorUrl["userid"] = $result[0]['userid'];
+            $postIdAndAuthorId["postid"] = $result[0]['postid'];
+            $postIdAndAuthorId["userid"] = $result[0]['userid'];
+            #print_r($postAndAuthorUrl);
             return $postIdAndAuthorId;
         }
         else {

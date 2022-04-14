@@ -95,7 +95,8 @@
                         $category = "bibliotheca";
                         $last_post_n_user = $utils->getLastPostIdAndAuthorId($category);
 
-                        print_r($last_post_n_user);
+                        #print_r($last_post_n_user);
+
                         $finduser = new User($database);
                         $userinfo = $finduser->get_data($last_post_n_user["userid"]);
                         $name = $userinfo['username'];
@@ -103,11 +104,11 @@
                         $findpost = new post($database);
                         $postinfo = $findpost->get_data($last_post_n_user["postid"]);
 
-                        $postdate = $postinfo['date']
+                        $postdate = $postinfo['date'];
                     ?>
                     <b><a href="">Last Post</a></b> by <a href="ToLastUserProfileBibliotheca.php"><?php echo $name?></a> 
                     <!--- The <br> tag inserts a single line break.--->
-                    <br> on <small> <?php echo $last_post_n_user?> </small>
+                    <br> on <small> <?php echo $postdate;?> </small>
                 </div>
             
             </div>
