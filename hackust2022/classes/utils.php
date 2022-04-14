@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 include_once("classes/connect.php");
 
 class Utils {
@@ -124,8 +125,9 @@ class Utils {
             return $bookmarked;
         }
         else {
-            // No such record with given postid and userid
-            return false;
+            $insertQuery = "INSERT INTO bibliohk.postuserinfo (postid, userid, bookmarked) 
+            VALUES ({$_SESSION['BiblioHK_postid']}, {$_SESSION['BiblioHK_userid']}, 0);";
+            return 0;
         }
     }
 
