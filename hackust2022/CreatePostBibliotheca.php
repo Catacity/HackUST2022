@@ -28,13 +28,13 @@
             echo "</div>";
         }
 
-        print_r($result);
+        #print_r($result);
         #print_r($_POST);
-        // else{
-        //     header("Location: BibliothecaPost.php");
-        //     die;
-        // }
-        
+        else{
+            header("Location: BibliothecaPost.php");
+            die;
+        }
+
     }  
      
 ?>

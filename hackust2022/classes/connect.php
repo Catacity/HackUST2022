@@ -60,15 +60,18 @@ class database{
         $result = mysqli_query($this->connection, $query);   
     
         #echo mysqli_error($this->connection);
-        echo $result;
-        
-        if ($result->num_rows == 0){
+        #echo $result;
+
+
+        if (!$result){
             return false;
         }
 
         else{
             return $result;
         }
+    
+    
     }
 }
 
