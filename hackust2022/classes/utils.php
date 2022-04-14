@@ -57,8 +57,10 @@ class Utils {
         }
         $query .= " ORDER BY date DESC;";
         $result = $database->read($query);
-        $postAndAuthorUrl["postid"] = $result['postid'];
-        $postAndAuthorUrl["userid"] = $result['userid'];
+        if ($result) {
+            $postAndAuthorUrl["postid"] = $result['postid'];
+            $postAndAuthorUrl["userid"] = $result['userid'];
+        }
         return $postIdAndAuthorId;
     }
 }
