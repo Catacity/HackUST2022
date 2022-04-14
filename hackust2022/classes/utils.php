@@ -136,6 +136,12 @@ class Utils {
             WHERE postid = \"{$postid}\" AND userid = \"{$userid}\";";
         $this->database->write($query);
     }
+
+    public function getComments($postid) {
+        $query = "SELECT * FROM bibliohk.comments WHERE postid = \"{$postid}\";";
+        $result = $this->database->read($query);
+        return $result;
+    }
 }
 
 $utils = new Utils($database);
