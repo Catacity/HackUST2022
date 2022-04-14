@@ -5,7 +5,7 @@
     include_once("classes/login.php");
     include_once("classes/utils.php");
     // print_r(Utils::guidv4());
-    // print_r($_SESSION);
+    print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +89,7 @@
                 </div>
                 <!--- item 4 in the row --->
                 <div class= "subforum-info subforum-column">
-                    <b><a href="">Last Post</a></b> by <a href="Profile.php">Admin</a> 
+                    <b><a href="">Last Post</a></b> by <a href="ToLastUserProfileBibliotheca.php">Admin</a> 
                     <!--- The <br> tag inserts a single line break.--->
                     <br> on <small> 6/4/2022 </small>
                 </div>
@@ -114,7 +114,7 @@
                 </div>
                 <!--- item 4 in the row --->
                 <div class= "subforum-info subforum-column">
-                    <b><a href="">Last Post</a></b> by <a href="Profile.php">Admin</a> 
+                    <b><a href="">Last Post</a></b> by <a href="ToLastUserProfileBookmarked.php">Admin</a> 
                     <!--- The <br> tag inserts a single line break.--->
                     <br> on <small> 6/4/2022 </small>
                 </div>
@@ -146,7 +146,7 @@
                     </div>
                     <!--- item 4 in the row --->
                     <div class= "subforum-info subforum-column">
-                        <b><a href="">Last Post</a></b> by <a href="Profile.php">TestUser</a> 
+                        <b><a href="">Last Post</a></b> by <a href="ToLastUserProfileChatroom.php">TestUser</a> 
                         <!--- The <br> tag inserts a single line break.--->
                         <br> on <small> 6/4/2022 </small>
                     </div>

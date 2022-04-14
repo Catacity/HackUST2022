@@ -78,7 +78,7 @@
             </div>
             <!--- item 4 in the row --->
             <div class= "subforum-info subforum-column">
-                <b><a href="">Last Post</a></b> by <a href="Profile.html">Admin</a> 
+                <b><a href="">Last Post</a></b> by <a href="ToLastUserProfilelt100.php">Admin</a> 
                 <!--- The <br> tag inserts a single line break.--->
                 <br> on <small> 6/4/2022 </small>
             </div>
@@ -91,7 +91,7 @@
             </div>
             <!--- item 2 in the row --->
             <div class= "subforum-description subforum-column">
-                <h1><a href="">100 words</a></h1>                        
+                <h1><a href="">Less than 200 words</a></h1>                        
             </div> 
             <!--- item 3 in the row --->
             <div class = "subforum-stats subforum-column center">
@@ -112,7 +112,7 @@
             </div>
             <!--- item 2 in the row --->
             <div class= "subforum-description subforum-column">
-                <h1><a href="">200 words</a></h1>                        
+                <h1><a href="">Less than 300 words</a></h1>                        
             </div> 
             <!--- item 3 in the row --->
             <div class = "subforum-stats subforum-column center">
@@ -133,7 +133,7 @@
             </div>
             <!--- item 2 in the row --->
             <div class= "subforum-description subforum-column">
-                <h1><a href="">300 words</a></h1>                        
+                <h1><a href="">Less than 400 words</a></h1>                        
             </div> 
             <!--- item 3 in the row --->
             <div class = "subforum-stats subforum-column center">
@@ -154,7 +154,7 @@
             </div>
             <!--- item 2 in the row --->
             <div class= "subforum-description subforum-column">
-                <h1><a href="">400 words</a></h1>                        
+                <h1><a href="">Less than 500 words</a></h1>                        
             </div> 
             <!--- item 3 in the row --->
             <div class = "subforum-stats subforum-column center">
@@ -175,7 +175,7 @@
             </div>
             <!--- item 2 in the row --->
             <div class= "subforum-description subforum-column">
-                <h1><a href="">500 words</a></h1>                        
+                <h1><a href="">Less than 600 words</a></h1>                        
             </div> 
             <!--- item 3 in the row --->
             <div class = "subforum-stats subforum-column center">
@@ -196,7 +196,7 @@
             </div>
             <!--- item 2 in the row --->
             <div class= "subforum-description subforum-column">
-                <h1><a href="">600 words</a></h1>                        
+                <h1><a href="">Less than 700 words</a></h1>                        
             </div> 
             <!--- item 3 in the row --->
             <div class = "subforum-stats subforum-column center">
@@ -217,7 +217,7 @@
             </div>
             <!--- item 2 in the row --->
             <div class= "subforum-description subforum-column">
-                <h1><a href="">700 words</a></h1>                        
+                <h1><a href="">Less than 800 words</a></h1>                        
             </div> 
             <!--- item 3 in the row --->
             <div class = "subforum-stats subforum-column center">
@@ -238,7 +238,7 @@
             </div>
             <!--- item 2 in the row --->
             <div class= "subforum-description subforum-column">
-                <h1><a href="">800 words</a></h1>                        
+                <h1><a href="">Less than 900 words</a></h1>                        
             </div> 
             <!--- item 3 in the row --->
             <div class = "subforum-stats subforum-column center">
@@ -259,7 +259,7 @@
             </div>
             <!--- item 2 in the row --->
             <div class= "subforum-description subforum-column">
-                <h1><a href="">900 words</a></h1>                        
+                <h1><a href="">Less than 1000 words</a></h1>                        
             </div> 
             <!--- item 3 in the row --->
             <div class = "subforum-stats subforum-column center">
@@ -280,7 +280,7 @@
             </div>
             <!--- item 2 in the row --->
             <div class= "subforum-description subforum-column">
-                <h1><a href="">1000 words</a></h1>                        
+                <h1><a href="">Less than 1200 words</a></h1>                        
             </div> 
             <!--- item 3 in the row --->
             <div class = "subforum-stats subforum-column center">
@@ -301,7 +301,7 @@
             </div>
             <!--- item 2 in the row --->
             <div class= "subforum-description subforum-column">
-                <h1><a href="">1200 words</a></h1>                        
+                <h1><a href="">Less than 1500 words</a></h1>                        
             </div> 
             <!--- item 3 in the row --->
             <div class = "subforum-stats subforum-column center">
@@ -322,7 +322,7 @@
             </div>
             <!--- item 2 in the row --->
             <div class= "subforum-description subforum-column">
-                <h1><a href="">1500 words</a></h1>                        
+                <h1><a href="">Less than 2000 words</a></h1>                        
             </div> 
             <!--- item 3 in the row --->
             <div class = "subforum-stats subforum-column center">

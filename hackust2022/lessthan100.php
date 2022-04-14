@@ -103,7 +103,7 @@
             <div class="post-row ">
                 <!--- item 1 in the row --->
                 <div class = "post-title subforum-column center">
-                    <a href="ChatroomPost.php"><?php echo $result[$i]['title'];?></a>   
+                    <a href="BibliothecaPost.php"><?php echo $result[$i]['title'];?></a>   
                 </div>
                 <!--- item 2 in the row --->
                 <div class= "post-author post-column">
