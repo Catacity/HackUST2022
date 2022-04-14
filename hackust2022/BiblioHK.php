@@ -96,10 +96,11 @@
 
 <div class = "post-content" style="white-space: pre-wrap"> 
     Welcome to BiblioHK! This forum is created in order to provide an organized platform for Hong Kongers to share their written work.In the Bibliotheca session, people's work are classified based on their word count, so that users that are less fluent in English can choose to read posts with less number of words in total if they want.
-
+    歡迎來到BiblioHK！係呢到你可以隨意分享你哋嘅英文作文，如果你有任何英文上嘅問題，都歡迎係論壇上提出！
     Users are highly recommended to communicate others in English, especially in the Bibliotheca session. However, such language rule / recommendation is not strictly applied in the chat room session. 
-
-    If you have any questions or you want to seek advices from others, feel free to ask a question in the chat room session! 
+    使用英文能更好地提升英文水平，不過係Chatroom使用中文都係冇問題嘅！
+    If you have any questions or you want to seek advices from others, feel free to ask a question in the chat room session!
+    希望大家多分享，多交流，一齊進步！
 </div>
 
                 <br>
