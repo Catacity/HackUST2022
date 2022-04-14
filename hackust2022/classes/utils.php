@@ -125,7 +125,8 @@ class Utils {
         }
         else {
             $insertQuery = "INSERT INTO bibliohk.postuserinfo (postid, userid, bookmarked) 
-            VALUES ({$postid}, {$userid}, 0);";
+                VALUES ({$postid}, {$userid}, 0);";
+            $this->database->write($insertQuery);
             return 0;
         }
     }

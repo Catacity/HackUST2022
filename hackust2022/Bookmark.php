@@ -10,12 +10,4 @@
 
     header("Location: " . $originalurl);
     die;
-
-    // try {
-        
-    // }
-    // catch (\Exception $e) {
-    //     header("Location: home.php");
-    //     die;
-    // }
 ?>
