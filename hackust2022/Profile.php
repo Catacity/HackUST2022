@@ -81,17 +81,22 @@
         Username : <?php echo $result['username'];?><br><br>
         Gender : <?php echo $result['gender'];?><br><br>
         Education/Qualitifcations⠀: <?php echo $result['qualifications'];?><br><br>
+
+        Bookmarked pages: <br>
+        <?php foreach($bookmarkedPosts as $post):   
+            if($utils->isChatroom($post["postid"])): 
+                $urlpost = "ChatroomPost?postid=" . $post["postid"]; ?>
+                <a href = <?php echo $urlpost; ?>> <?php echo $utils->getPostTitleByID($post["postid"]); ?> </a>
+                <br>
+            <?php else:
+                $urlpost = "BibliothecaPost?postid=" . $post["postid"]; ?>
+                <a href = <?php echo $urlpost; ?>> <?php echo $utils->getPostTitleByID($post["postid"]); ?> </a>
+                <br>
+            <?php endif; ?>
+        <?php endforeach; ?>
+
     </div>
 
-    <?php foreach($bookmarkedPosts as $post):   
-        if($utils->isChatroom($post["postid"])): 
-            $urlpost = "ChatroomPost?postid=" . $post["postid"]; ?>
-            <a href = <?php echo $urlpost; ?>> <?php echo utils->getPostTitleByID($post["postid"]); ?> </a>
-        <?php else:
-            $urlpost = "BibliothecaPost?postid=" . $post["postid"]; ?>
-            <a href = <?php echo $urlpost; ?>> <?php echo utils->getPostTitleByID($post["postid"]); ?> </a>
-        <?php endif; ?>
-    <?php endforeach; ?>
 
     <script src="main.js"></script>
 </body>
