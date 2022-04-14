@@ -66,8 +66,8 @@ class Utils {
         $query .= " ORDER BY date DESC;";
         $result = $this->database->read($query);
         if ($result) {
-            $postAndAuthorUrl["postid"] = $result['postid'];
-            $postAndAuthorUrl["userid"] = $result['userid'];
+            $postAndAuthorUrl["postid"] = $result[0]['postid'];
+            $postAndAuthorUrl["userid"] = $result[0]['userid'];
             return $postIdAndAuthorId;
         }
         else {
