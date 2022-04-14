@@ -149,6 +149,12 @@ class Utils {
         $result = $this->database->read($query);
         return $result;
     }
+
+    public function getBookmarkedPosts($userid) {
+        $query = "SELECT postid FROM bibliohk.postuserinfo WHERE userid = \"{$userid}\" AND bookmarked = 1;";
+        $result = $this->database->read($query);
+        return $result;
+    }
 }
 
 $utils = new Utils($database);
