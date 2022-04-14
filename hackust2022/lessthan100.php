@@ -64,7 +64,7 @@
                     </div>    
                 <?php endif; ?>
 
-            <span><a href="home.php"> Home Page </a> >> <a href="lessthan100.php">Less than 100 words</a></span>
+            <span><a href="home.php"> Home Page </a> >> <a href="Bibliotheca.php"> The Bibliotheca </a> >> <a href="lessthan100.php">Less than 100 words</a></span>
 
             <div class = "search_bar">
                 Search: <input type="text" id="search_box" placeholder="Search for a Chat Room">⠀<i class="fa fa-search"></i>
