@@ -79,14 +79,27 @@ class Utils {
         $query = "SELECT Q1Ans, Q2Ans, Q3Ans, Q4Ans FROM bibliohk.postuserinfo 
         WHERE postid = \"{$postid}\" AND userid = \"{$userid}\"";
         $result = $this->database->read($query);
+        if ($result) {
+            if ($result[0]["Q1Ans"] == null || $result[0]["Q2Ans"] == null || $result[0]["Q3Ans"] == null || $result[0]["Q4Ans"] == null) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
     }
 
     public function test() {
         $query = "SELECT * FROM bibliohk.users;";
         $result = $this->database->read($query);
-        echo $result;
-        $gender = $result["gender"];
-        echo $gender;
+        // print_r($result);
+        $gender = $result[0]["gender"];
+        if ($gender != null) {
+            echo "it is null";
+        }
+        else {
+            echo "it isn't null";
+        }
     }
 }
 
