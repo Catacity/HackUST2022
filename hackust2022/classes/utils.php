@@ -130,7 +130,7 @@ class Utils {
     }
 
     public function bookmark($postid, $userid) {
-        $bookmarked = getBookmarked($postid, $userid);
+        $bookmarked = $this->getBookmarked($postid, $userid);
         $query = "UPDATE bibliohk.postuserinfo 
             SET bookmarked = {1-$bookmarked} 
             WHERE postid = \"{$postid}\" AND userid = \"{$userid}\";";
