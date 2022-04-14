@@ -268,7 +268,10 @@
                 <br>
 
                 <div class = credit>
-                    <div class = "post-stat">20 bookmarked</div>
+                    <php?
+                        $targeturl = "Bookmark.php?postid=" . $_SESSION['BiblioHK_postid'] . "&originalurl=BibliothecaPost.php";
+                    ?>
+                    <div class = "post-stat">20 <a href=<php? echo $targeturl;?>>bookmarked</a></div>
                     <div class = "post-stat"> Written by <?php echo $findname['username'];?></div>
                     <div class = "post-stat"> at <?php echo $result['date'];?></div>
                 </div>
