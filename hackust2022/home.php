@@ -7,7 +7,7 @@
     include_once("classes/users.php");
     include_once("classes/post.php");
     // print_r(Utils::guidv4());
-    print_r($_SESSION);
+    #print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -94,12 +94,20 @@
                     <?php 
                         $category = "bibliotheca";
                         $last_post_n_user = $utils->getLastPostIdAndAuthorId($category);
-                        $_SESSION['BiblioHK_pageuserid'] = $last_post_n_user["userid"];
-                        $_SESSION['BiblioHK_postid'] = $last_post_n_user["postid"];
+
+                        print_r($last_post_n_user);
+                        $finduser = new User($database);
+                        $userinfo = $finduser->get_data($last_post_n_user["userid"]);
+                        $name = $userinfo['username'];
+
+                        $findpost = new post($database);
+                        $postinfo = $findpost->get_data($last_post_n_user["postid"]);
+
+                        $postdate = $postinfo['date']
                     ?>
-                    <b><a href="">Last Post</a></b> by <a href="ToLastUserProfileBibliotheca.php">Admin</a> 
+                    <b><a href="">Last Post</a></b> by <a href="ToLastUserProfileBibliotheca.php"><?php echo $name?></a> 
                     <!--- The <br> tag inserts a single line break.--->
-                    <br> on <small> 6/4/2022 </small>
+                    <br> on <small> <?php echo $last_post_n_user?> </small>
                 </div>
             
             </div>

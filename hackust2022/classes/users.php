@@ -1,10 +1,16 @@
 <?php
 class User{
+    private $database;
+
+    function __construct($database) {
+        $this->database = $database;
+    }
+
     public function get_data($userid){
+
         $query = "select * from users where userid = '$userid' limit 1";
         
-        $DB = new database();
-        $result = $DB->read($query);
+        $result = $this->database->read($query);
 
         if ($result){
             $row = $result[0];

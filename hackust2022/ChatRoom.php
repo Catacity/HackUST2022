@@ -10,7 +10,7 @@
     $category = "chatroom";
     $posts= new category($database);   
     $result = $posts->get_data($category);
-    $users = new User();
+    $users = new User($database);
     $username = "";
     #print_r($result);
     $no_of_posts = count($result);
