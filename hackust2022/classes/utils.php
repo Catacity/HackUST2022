@@ -167,6 +167,30 @@ class Utils {
         $result = $this->database->read($query);
         return $result;
     }
+
+    public function getUserNameByID($userid) {
+        $query = "SELECT username FROM bibliohk.users WHERE userid = \"{$userid}\";";
+        $result = $this->database->read($query);
+        if ($result) {
+            return $result[0]["username"];
+        }
+        else {
+            // Cannot find user
+            return false;
+        }
+    }
+
+    public function getPostTitleByID($postid) {
+        $query = "SELECT title FROM bibliohk.posts WHERE postid = \"{$postid}\";";
+        $result = $this->database->read($query);
+        if ($result) {
+            return $result[0]["title"];
+        }
+        else {
+            // Cannot find post
+            return false;
+        }
+    }
 }
 
 $utils = new Utils($database);
