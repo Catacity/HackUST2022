@@ -6,9 +6,9 @@
         $url_components = parse_url(Utils::getCurrentUrl());
         parse_str($url_components['query'], $params);
 
-        $postid = $params['postid'];
+        $postid = $_SESSION['BiblioHK_postid'];
         $userid = $_SESSION['BiblioHK_userid'];
-        $originalurl = $params['originalurl'];
+        $originalurl = $_SESSION['BiblioHK_url'];
 
         $utils->bookmark($postid, $userid);
 
