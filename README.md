@@ -22,11 +22,12 @@ This is an example of how you set up the forum website on localhost
 
 ## Database Design
 Database name: bibliohk  
+  
 Tables design:  
-- users(<ins>userid</ins>)
-- posts()
-- postuserinfo()
-- comments()
+- users(<ins>userid</ins>, username, gender, email, password, profileURL, qualifications, date)
+- posts(<ins>postid</ins>, userid, category, title, content, date, Q1question, Q1Option1, Q1Option2, Q1Option3, Q1Option4, Q2question, Q2Option1, Q2Option2, Q2Option3, Q2Option4, Q3question, Q3Option1, Q3Option2, Q3Option3, Q3Option4, Q4question, Q4Option1, Q4Option2, Q4Option3, Q4Option4)
+- postuserinfo(<ins>postid</ins>, <ins>userid</ins>, bookmarked, Q1Ans, Q2Ans, Q3Ans, Q4Ans)
+- comments(<ins>commentid</ins>, postid, userid, content, date)
 
 ---
 
