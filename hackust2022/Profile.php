@@ -46,6 +46,8 @@
     //     die;
     // }
 
+    $bookmarkedPosts = $utils->getBookmarkedPosts($userid);
+
 ?>
 
 <!DOCTYPE html>
@@ -80,6 +82,16 @@
         Gender : <?php echo $result['gender'];?><br><br>
         Education/Qualitifcations⠀: <?php echo $result['qualifications'];?><br><br>
     </div>
+
+    <?php foreach($bookmarkedPosts as $post):   
+        if($utils->isChatroom($post["postid"])): 
+            $urlpost = "ChatroomPost?postid=" . $post["postid"]; ?>
+            <a href = <?php echo $urlpost; ?>> <?php echo utils->getPostTitleByID($post["postid"]); ?> </a>
+        <?php else:
+            $urlpost = "BibliothecaPost?postid=" . $post["postid"]; ?>
+            <a href = <?php echo $urlpost; ?>> <?php echo utils->getPostTitleByID($post["postid"]); ?> </a>
+        <?php endif; ?>
+    <?php endforeach; ?>
 
     <script src="main.js"></script>
 </body>

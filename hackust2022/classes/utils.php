@@ -156,6 +156,13 @@ class Utils {
         return $result;
     }
 
+    public function isChatroom($postid) {
+        $query = "SELECT category FROM bibliohk.posts WHERE postid = \"{$postid}\";";
+        $result = $this->database->read($query);
+        $category = $result[0]["category"];
+        return ($category == "chatroom");
+    }
+
     public function getTopTenBookmarkedPosts() {
         $query = "SELECT postid, userid, title FROM bibliohk.posts  
             WHERE category != \"chatroom\" AND postid IN (
