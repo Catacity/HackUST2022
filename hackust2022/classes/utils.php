@@ -115,6 +115,12 @@ class Utils {
         }
     }
 
+    public function initializePostUserInfo($postid, $userid) {
+        $query = "INSERT INTO bibliohk.postuserinfo (postid, userid, bookmarked) 
+            VALUES ({$postid}, {$userid}, 0);";
+        $this->database->write($insertQuery);
+    }
+
     public function getBookmarked($postid, $userid) {
         $query = "SELECT bookmarked FROM bibliohk.postuserinfo
             WHERE postid = \"{$postid}\" AND userid = \"{$userid}\";";
@@ -124,9 +130,7 @@ class Utils {
             return $bookmarked;
         }
         else {
-            $insertQuery = "INSERT INTO bibliohk.postuserinfo (postid, userid, bookmarked) 
-                VALUES ({$postid}, {$userid}, 0);";
-            $this->database->write($insertQuery);
+            $this->initializePostUserInfo($postid, $userid);
             return 0;
         }
     }
