@@ -155,6 +155,18 @@ class Utils {
         $result = $this->database->read($query);
         return $result;
     }
+
+    public function getTopTenBookmarkedPosts() {
+        $query = "SELECT postid, userid, title FROM bibliohk.posts  
+            WHERE category != \"chatroom\" AND postid IN (
+            SELECT postid FROM bibliohk.postuserinfo
+            WHERE bookmarked = 1
+            GROUP BY postid
+            ORDER BY COUNT(userid) DESC LIMIT 10)
+            LIMIT 10;";
+        $result = $this->database->read($query);
+        return $result;
+    }
 }
 
 $utils = new Utils($database);
