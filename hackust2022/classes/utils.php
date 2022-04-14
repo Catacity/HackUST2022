@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 include_once("classes/connect.php");
 
 class Utils {
@@ -126,14 +125,14 @@ class Utils {
         }
         else {
             $insertQuery = "INSERT INTO bibliohk.postuserinfo (postid, userid, bookmarked) 
-            VALUES ({$_SESSION['BiblioHK_postid']}, {$_SESSION['BiblioHK_userid']}, 0);";
+            VALUES ({$postid}, {$userid}, 0);";
             return 0;
         }
     }
 
     public function bookmark($postid, $userid) {
         $bookmarked = $this->getBookmarked($postid, $userid);
-        $value = 1-$bookmarked;
+        $value = 1 - $bookmarked;
         $query = "UPDATE bibliohk.postuserinfo 
             SET bookmarked = {$value} 
             WHERE postid = \"{$postid}\" AND userid = \"{$userid}\";";
