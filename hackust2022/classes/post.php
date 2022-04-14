@@ -136,6 +136,36 @@ class post{
         $this->database->write($query);
     }
 
+    public function validate_comment($data){
+        foreach ($data as $key => $value){
+            if (empty($value)){
+                $this->error = $this->error . $key . " is empty!<br>"; # . concat to the end of the string
+            } 
+        }
+        // if (($data['comment'] == "")){
+        //     $this->error = $this->error ." comment is empty!<br>"; # . concat to the end of the string
+        // }
+        if ($this->error == ""){
+         
+            $this->create_comment($data);
+            return;
+        }
+
+        else{
+            return $this->error;
+        }   
+    }
+
+    public function create_comment($data){
+        $userid = $_SESSION['BiblioHK_userid'];
+        $postid = $_SESSION['BiblioHK_postid'];
+
+        $content = $data['comment']; //insert into database
+        
+        $query= "insert into comments (postid,userid,content) values ('$postid','$userid','$content')";
+
+        $this->database->write($query);
+    }
 }
 
 ?>

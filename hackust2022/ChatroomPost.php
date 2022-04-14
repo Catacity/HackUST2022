@@ -52,7 +52,14 @@
             header("Location: home.php");
             die;
         }
+        
+        $comments = $utils->getComments($_SESSION['BiblioHK_postid']);
+        $i = 0;
+        $comment_count = 0;
 
+        if($comments){
+            $comment_count = count($comments);       
+        }
     }
 
     else{
@@ -60,6 +67,28 @@
         header("Location: home.php");
         die;
     }
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        # Before clicking submit, the request method was "GET" 
+        #print_r($_POST); 
+        $commentresult = $post->validate_comment($_POST); 
+        #echo $result;
+
+        if ($commentresult != ""){  
+            echo "<div style = 'text-align:center;font-size:12px;color:white;background-color:grey;border-radius: 15px;'>";
+            echo "The following error(s) have occured: <br><br>";
+            echo $commentresult;
+            echo "</div>";
+        }
+
+        else{
+            #print_r ($_SESSION);
+            header("Location: ChatroomPost.php");
+            die;
+        }
+
+    } 
+
 
 ?>
 
@@ -191,30 +220,36 @@
 
             <br>
             
+            <?php while ($i < $comment_count): ?>
             <div class = "post-session">
-                <div class = "post-head"> My essay</div>
+                <?php   
+                    $finduser = new User($database);
+                    $namefound = $finduser->get_data($comments[$i]['userid']);
+                    $name = $namefound['username']
+                ?>
+
+                <div class = "post-head"><?php echo $name;?></div>
 
 <div class = "post-content " style="white-space: pre-wrap"> 
-    Wow this essay is boring  
-    Lmao what am I even reading.
-    Well tbf this is just for testing soooo lol
+    <?php echo $comments[$i]['content']?>
 </div>
 
                 <br>
                 <div class = credit>
-                    <div class = "post-stat"> Written by test</div>
-                    <div class = "post-stat"> at 12/4/2022</div>
+                    <div class = "post-stat"> Written by <?php echo $name?></div>
+                    <div class = "post-stat"> at <?php echo $comments[$i]['date']?></div>
                 </div>
                 
             </div>
 
-
             <br>
-            
+            <?php $i = $i + 1?>
+            <?php endwhile; ?>
+
             <div class ="comment-session center">
                 <form method = "post">
                     Comment⠀⠀: <br>
-                    <textarea class ="comment" id = "comment-box" placeholder="Type your comments here" ></textarea><br><br>
+                    <textarea name = "comment" class ="comment" id = "comment-box" placeholder="Type your comments here" ></textarea><br><br>
                     <input type = "submit" id = "button" value = "Submit"><br><br>
                 </form>
             </div>
