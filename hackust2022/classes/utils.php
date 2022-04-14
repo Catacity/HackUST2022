@@ -56,7 +56,7 @@ class Utils {
                 break;
         }
         $query .= " ORDER BY date DESC;";
-        $result = $database.read($query);
+        $result = $database->read($query);
         $postAndAuthorUrl["postid"] = $result['postid'];
         $postAndAuthorUrl["userid"] = $result['userid'];
         return $postIdAndAuthorId;
