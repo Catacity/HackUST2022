@@ -2,6 +2,8 @@
 
 A English forum for Hongkongers to improve English skills by sharing their own work, commenting on others' work and reading others' comments.
 
+Note: This is a prototype of the forum. Some features are unavailable! (e.g Search box, multiple choice statistics display, post number count in home page etc)
+
 ---
 
 ## Getting Started
