@@ -99,7 +99,7 @@ class Utils {
             return true;
         }
         $query = "SELECT Q1Ans, Q2Ans, Q3Ans, Q4Ans FROM bibliohk.postuserinfo 
-        WHERE postid = \"{$postid}\" AND userid = \"{$userid}\"";
+            WHERE postid = \"{$postid}\" AND userid = \"{$userid}\";";
         $result = $this->database->read($query);
         if ($result) {
             if ($result[0]["Q1Ans"] == null || $result[0]["Q2Ans"] == null || $result[0]["Q3Ans"] == null || $result[0]["Q4Ans"] == null) {
@@ -113,6 +113,28 @@ class Utils {
             // No such record with given postid and userid
             return false;
         }
+    }
+
+    public function getBookmarked($postid, $userid) {
+        $query = "SELECT bookmarked FROM bibliohk.postuserinfo
+            WHERE postid = \"{$postid}\" AND userid = \"{$userid}\";";
+        $result = $this->database->read($query);
+        if ($result) {
+            $bookmarked = $result[0]["bookmarked"];
+            return $bookmarked;
+        }
+        else {
+            // No such record with given postid and userid
+            return false;
+        }
+    }
+
+    public function bookmark($postid, $userid) {
+        $bookmarked = getBookmarked($postid, $userid);
+        $query = "UPDATE bibliohk.postuserinfo 
+            SET bookmarked = {1-$bookmarked} 
+            WHERE postid = \"{$postid}\" AND userid = \"{$userid}\";";
+        $this->database->write($query);
     }
 }
 
