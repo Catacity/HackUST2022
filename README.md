@@ -19,12 +19,12 @@ This is an example of how you set up the forum website on localhost
 ---
 
 ## Database Design
-Database name: bibliohk
-Tables design:
-users(<ins>userid</ins>)
-posts()
-postuserinfo()
-comments()
+Database name: bibliohk  
+Tables design:  
+- users(<ins>userid</ins>)
+- posts()
+- postuserinfo()
+- comments()
 
 ---
 
