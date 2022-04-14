@@ -16,7 +16,7 @@
         // Default value
         $userid = $_SESSION['BiblioHK_userid'];
     }
-    echo $userid;
+    #echo $userid;
 
     // if (!isset($_SESSION['BiblioHK_pageuserid'])){
     //     header("Location: home.php");

@@ -3,7 +3,134 @@
     
     include_once("classes/connect.php");
     include_once("classes/login.php");
+    include_once("classes/post.php");
+    include_once("classes/users.php");
+    include_once("classes/utils.php");
     #print_r($_SESSION);
+
+    if (!isset($_SESSION['BiblioHK_postid'])){
+        header("Location: home.php");
+        die;
+    }
+
+    $post = new post($database);
+    
+    $result = $post->get_data($_SESSION['BiblioHK_postid']);
+
+    $title = "";
+    $content = "";
+    $userid = "";
+    $date = "";
+    $Q1question = "";
+    $Q1Option1 = "";
+    $Q1Option2 = "";
+    $Q1Option3 = "";
+    $Q1Option4 = "";
+
+    $Q2question = "";
+    $Q2Option1 = "";
+    $Q2Option2 = "";
+    $Q2Option3 = "";
+    $Q2Option4 = "";
+
+    $Q3question = "";
+    $Q3Option1 = "";
+    $Q3Option2 = "";
+    $Q3Option3 = "";
+    $Q3Option4 = "";
+
+    $Q4question = "";
+    $Q4Option1 = "";
+    $Q4Option2 = "";
+    $Q4Option3 = "";
+    $Q4Option4 = "";
+    
+    $Q1Ans = "";
+    $Q2Ans = "";
+    $Q3Ans = "";
+    $Q4Ans = "";
+
+    if ($result){
+        # post exist
+        $title = $result['title'];
+        $content = $result['content'];
+        $userid = $result['userid'];
+        $date = $result['date'];
+
+        $Q1question = $result['Q1question'];
+        $Q1Option1 = $result['Q1Option1'];
+        $Q1Option2 = $result['Q1Option2'];
+        $Q1Option3 = $result['Q1Option3'];
+        $Q1Option4 = $result['Q1Option4'];
+
+        $Q2question = $result['Q2question'];
+        $Q2Option1 = $result['Q2Option1'];
+        $Q2Option2 = $result['Q2Option2'];
+        $Q2Option3 = $result['Q2Option3'];
+        $Q2Option4 = $result['Q2Option4'];
+
+        $Q3question = $result['Q3question'];
+        $Q3Option1 = $result['Q3Option1'];
+        $Q3Option2 = $result['Q3Option2'];
+        $Q3Option3 = $result['Q3Option3'];
+        $Q3Option4 = $result['Q3Option4'];
+
+        $Q4question = $result['Q4question'];
+        $Q4Option1 = $result['Q4Option1'];
+        $Q4Option2 = $result['Q4Option2'];
+        $Q4Option3 = $result['Q4Option3'];
+        $Q4Option4 = $result['Q4Option4'];
+
+        $user = new User();
+        $findname = $user->get_data($userid);
+
+        $username = "";
+    
+        if ($findname){
+            # User exist
+            $username = $findname['username'];
+        }
+    
+        else{
+            # Cannot find the specified user in the database!
+            header("Location: home.php");
+            die;
+        }
+
+    }
+
+    else{
+        # Cannot find the specified user in the database!
+        header("Location: home.php");
+        die;
+    }
+
+    $isanswered = $utils->postIsAnsweredByUser($_SESSION['BiblioHK_postid'], $_SESSION['BiblioHK_userid']);
+
+    if (!$isanswered){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            # Before clicking submit, the request method was "GET"  
+            $result = $post->validate_mc($_POST); 
+            #echo $result;
+    
+            if ($result != ""){  
+                echo "<div style = 'text-align:center;font-size:12px;color:white;background-color:grey;border-radius: 15px;'>";
+                echo "The following error(s) have occured: <br><br>";
+                echo $result;
+                echo "</div>";
+            }
+            
+            $Q1Ans = $_POST['Q1Ans'];
+            $Q2Ans = $_POST['Q1Ans'];
+            $Q3Ans = $_POST['Q1Ans'];
+            $Q4Ans = $_POST['Q1Ans'];
+    
+        }
+    }
+
+    else{
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -122,71 +249,68 @@
             <br><br>
 
             <div class = "post-session">
-                <div class = "post-head"> My essay</div>
+                <div class = "post-head"> <?php echo $result['title'];?></div>
 
 <div class = "post-content " style="white-space: pre-wrap"> 
-    This is some random text for testing This is some random text for testing  This is some random text for testing This is some random text for testing 
-    This is some random text for testing This is some random text for testing    This is some random text for testing This is some random text for testing   This is some random text for testing This is some random text for testing 
-    This is some random text for testing This is some random text for testing  This is some random text for testing This is some random text for testing  This is some random text for testing This is some random text for testing 
-    This is some random text for testing This is some random text for testing  This is some random text for testing This is some random text for testing  This is some random text for testing This is some random text for testing  This is some random text for testing This is some random text for testing 
-    This is some random text for testing This is some random text for testing  This is some random text for testing This is some random text for testing  This is some random text for testing This is some random text for testing   
+    <?php echo $result['content'];?>
 </div>
 
                 <br>
 
                 <div class = credit>
                     <div class = "post-stat">20 bookmarked</div>
-                    <div class = "post-stat"> Written by admin</div>
-                    <div class = "post-stat"> at 12/4/2022</div>
+                    <div class = "post-stat"> Written by <?php echo $findname['username'];?></div>
+                    <div class = "post-stat"> at <?php echo $result['date'];?></div>
                 </div>
 
             </div>
 
             <br>
+            <?php if (!$isanswered): ?>
             <!-- MC -->
             <div class ="comment-session">
                 <div class = "MC-text">MC</div><br>
                 <form method = "post">
-                    Q1: <br>
+                    Q1: <?php echo $result['Q1question'] ?><br>
                     <select id ="text" name = "Q1">
-                        <option><?php echo $Q1 ?></option>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                        <option>Option 4</option>
+                        <option><?php echo $Q1Ans ?></option>
+                        <option value="1"><?php echo $result['Q1Option1'];?></option>
+                        <option value="2"><?php echo $result['Q1Option2'];?></option>
+                        <option value="3"><?php echo $result['Q1Option3'];?></option>
+                        <option value="4"><?php echo $result['Q1Option4'];?></option>
                     </select>
 
                     <br>
 
-                    Q2: <br>
-                    <select id ="text" name = "Q1">
-                        <option><?php echo $Q1 ?></option>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                        <option>Option 4</option>
+                    Q2: <?php echo $result['Q2question'] ?><br>
+                    <select id ="text" name = "Q2">
+                        <option><?php echo $Q2Ans ?></option>
+                        <option value="1"><?php echo $result['Q2Option1'];?></option>
+                        <option value="2"><?php echo $result['Q2Option2'];?></option>
+                        <option value="3"><?php echo $result['Q2Option3'];?></option>
+                        <option value="4"><?php echo $result['Q2Option4'];?></option>
                     </select>
 
                     <br>
 
-                    Q3: <br>
-                    <select id ="text" name = "Q1">
-                        <option><?php echo $Q1 ?></option>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                        <option>Option 4</option>
+                    Q3: <?php echo $result['Q3question'] ?><br>
+                    <select id ="text" name = "Q3">
+                        <option><?php echo $Q3Ans ?></option>
+                        <option value="1"><?php echo $result['Q3Option1'];?></option>
+                        <option value="2"><?php echo $result['Q3Option2'];?></option>
+                        <option value="3"><?php echo $result['Q3Option3'];?></option>
+                        <option value="4"><?php echo $result['Q3Option4'];?></option>
                     </select>
                     
                     <br>
 
-                    Q4: <br>
-                    <select id ="text" name = "Q1">
-                        <option><?php echo $Q1 ?></option>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                        <option>Option 4</option>
+                    Q4: <?php echo $result['Q4question'] ?><br>
+                    <select id ="text" name = "Q4">
+                        <option><?php echo $Q4Ans ?></option>
+                        <option value="1"><?php echo $result['Q4Option1'];?></option>
+                        <option value="2"><?php echo $result['Q4Option2'];?></option>
+                        <option value="3"><?php echo $result['Q4Option3'];?></option>
+                        <option value="4"><?php echo $result['Q4Option4'];?></option>
                     </select>
 
                     <br><br>
@@ -195,9 +319,10 @@
 
                 </form>
             </div>
-
+            
+            <?php else: ?>
             <!-- For comment : unlocked only after the user have submitted the mc answer -->
-            <!--
+
             <div class = "post-session">
 
 <div class = "post-content " style="white-space: pre-wrap"> 
@@ -217,7 +342,9 @@
                     <input type = "submit" id = "button" value = "Submit"><br><br>
                 </form>
             </div>
-            -->
+
+            <?php endif; ?>
+
         </header>
 
     </body>

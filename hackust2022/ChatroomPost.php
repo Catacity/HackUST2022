@@ -48,11 +48,11 @@
 
     }
 
-    // else{
-    //     # Cannot find the specified user in the database!
-    //     header("Location: home.php");
-    //     die;
-    // }
+    else{
+        # Cannot find the specified user in the database!
+        header("Location: home.php");
+        die;
+    }
 
 ?>
 

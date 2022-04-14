@@ -8,7 +8,7 @@
     #print_r($_SESSION);
 
     $category = "chatroom";
-    $posts= new category();   
+    $posts= new category($database);   
     $result = $posts->get_data($category);
     $users = new User();
     $username = "";

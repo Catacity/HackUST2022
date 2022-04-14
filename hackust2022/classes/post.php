@@ -103,6 +103,39 @@ class post{
         }
     }
 
+    public function validate_mc($data){
+        foreach ($data as $key => $value){
+            if (empty($value)){
+                $this->error = $this->error . $key . " is empty!<br>"; # . concat to the end of the string
+            } 
+        }
+
+        if ($this->error == ""){
+         
+            $this->write_mc($data);
+            return;
+        }
+
+        else{
+            return $this->error;
+        }
+    }
+
+    public function write_mc($data){
+
+        $postid = $_SESSION['BiblioHK_postid'];
+        $userid = $_SESSION['BiblioHK_userid'];
+        $Q1Ans = $data['Q1'];
+        $Q2Ans= $data['Q2'];
+        $Q3Ans = $data['Q3'];
+        $Q4Ans = $data['Q4'];
+        
+        $query= "insert into postuserinfo (postid,userid,Q1Ans,Q2Ans,Q3Ans,Q4Ans) 
+        values ('$postid','$userid','$Q1Ans','$Q2Ans','$Q3Ans','$Q4Ans')";     
+
+        $this->database->write($query);
+    }
+
 }
 
 ?>

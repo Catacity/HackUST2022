@@ -4,8 +4,10 @@
     include_once("classes/connect.php");
     include_once("classes/login.php");
     include_once("classes/utils.php");
+    include_once("classes/users.php");
+    include_once("classes/post.php");
     // print_r(Utils::guidv4());
-    // print_r($_SESSION);
+    print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -89,6 +91,12 @@
                 </div>
                 <!--- item 4 in the row --->
                 <div class= "subforum-info subforum-column">
+                    <?php 
+                        $category = "bibliotheca";
+                        $last_post_n_user = $utils->getLastPostIdAndAuthorId($category);
+                        $_SESSION['BiblioHK_pageuserid'] = $last_post_n_user["userid"];
+                        $_SESSION['BiblioHK_postid'] = $last_post_n_user["postid"];
+                    ?>
                     <b><a href="">Last Post</a></b> by <a href="ToLastUserProfileBibliotheca.php">Admin</a> 
                     <!--- The <br> tag inserts a single line break.--->
                     <br> on <small> 6/4/2022 </small>

@@ -59,7 +59,7 @@ class database{
 
         $result = mysqli_query($this->connection, $query);   
     
-        #echo mysqli_error($this->connection);
+        echo mysqli_error($this->connection);
         #echo $result;
 
 
