@@ -83,6 +83,7 @@
         Education/Qualitifcations⠀: <?php echo $result['qualifications'];?><br><br>
 
         Bookmarked pages: <br>
+        <?php if ($bookmarkedPosts): ?>
         <?php foreach($bookmarkedPosts as $post):   
             if($utils->isChatroom($post["postid"])): 
                 $urlpost = "ChatroomPost?postid=" . $post["postid"]; ?>
@@ -92,8 +93,9 @@
                 $urlpost = "BibliothecaPost?postid=" . $post["postid"]; ?>
                 <a href = <?php echo $urlpost; ?>> <?php echo $utils->getPostTitleByID($post["postid"]); ?> </a>
                 <br>
-            <?php endif; ?>
+            <?php endif; ?>  
         <?php endforeach; ?>
+        <?php endif; ?>  
 
     </div>
 
