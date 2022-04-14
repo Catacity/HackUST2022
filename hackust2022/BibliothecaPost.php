@@ -259,7 +259,6 @@
             color:#1E90FF;
         }
     </style>
-
     <body>
         <header>
             <div class="navbar">
@@ -412,9 +411,8 @@
                     <input type = "submit" id = "button" value = "Submit"><br><br>
                 </form>
             </div>
-
+            <?php endif?>
         </header>
 
     </body>
-
 </html>
