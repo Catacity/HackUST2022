@@ -6,7 +6,7 @@
     include_once("classes/post.php");
     
     $category = "<100";
-    $last_post_n_user = $utils->getLastPostIdAndAuthorId($database,$category);
+    $last_post_n_user = $utils->getLastPostIdAndAuthorId($category);
     $_SESSION['BiblioHK_pageuserid'] = $last_post_n_user["userid"];
     $_SESSION['BiblioHK_postid'] = $last_post_n_user["postid"];
 
