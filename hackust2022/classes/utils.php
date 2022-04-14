@@ -1,6 +1,14 @@
 <?php
 
+include_once("classes/connect.php");
+
 class Utils {
+    private $database;
+    
+    function __construct($database) {
+        $this->database = $database;
+    }
+
     public static function guidv4($data = null) {
         // Generate 16 bytes (128 bits) of random data or use the data passed into the function.
         $data = $data ?? random_bytes(16);
@@ -19,7 +27,7 @@ class Utils {
         return (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     }
 
-    public function getLastPostIdAndAuthorId($database, $category = "default") {
+    public function getLastPostIdAndAuthorId($category = "default") {
         $postIdAndAuthorId = array();
         $query = "SELECT TOP 1 postid, userid FROM bibliohk.posts";
         switch ($category) {
@@ -56,15 +64,32 @@ class Utils {
                 break;
         }
         $query .= " ORDER BY date DESC;";
-        $result = $database->read($query);
+        $result = $this->database->read($query);
         if ($result) {
             $postAndAuthorUrl["postid"] = $result['postid'];
             $postAndAuthorUrl["userid"] = $result['userid'];
+            return $postIdAndAuthorId;
         }
-        return $postIdAndAuthorId;
+        else {
+            return false;
+        }
+    }
+
+    public function postIsAnsweredByUser($postid, $userid) {
+        $query = "SELECT Q1Ans, Q2Ans, Q3Ans, Q4Ans FROM bibliohk.postuserinfo 
+        WHERE postid = \"{$postid}\" AND userid = \"{$userid}\"";
+        $result = $this->database->read($query);
+    }
+
+    public function test() {
+        $query = "SELECT * FROM bibliohk.users;";
+        $result = $this->database->read($query);
+        echo $result;
+        $gender = $result["gender"];
+        echo $gender;
     }
 }
 
-$utils = new Utils();
+$utils = new Utils($database);
 
 ?>

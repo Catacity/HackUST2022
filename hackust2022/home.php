@@ -5,7 +5,8 @@
     include_once("classes/login.php");
     include_once("classes/utils.php");
     // print_r(Utils::guidv4());
-    print_r($_SESSION);
+    // print_r($_SESSION);
+    $utils->test();
 ?>
 
 <!DOCTYPE html>
