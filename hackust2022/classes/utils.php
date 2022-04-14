@@ -118,7 +118,7 @@ class Utils {
     public function initializePostUserInfo($postid, $userid) {
         $query = "INSERT INTO bibliohk.postuserinfo (postid, userid, bookmarked) 
             VALUES ({$postid}, {$userid}, 0);";
-        $this->database->write($insertQuery);
+        $this->database->write($query);
     }
 
     public function getBookmarked($postid, $userid) {
