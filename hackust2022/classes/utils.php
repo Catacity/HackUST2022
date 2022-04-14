@@ -71,11 +71,27 @@ class Utils {
             return $postIdAndAuthorId;
         }
         else {
+            // No post is found (probably because of no enough posts)
+            return false;
+        }
+    }
+
+    public function checkIsAuthor($postId, $userId) {
+        $query = "SELECT userid from bibliohk.posts WHERE postid = {$postId};";
+        $result = $this->database->read($query);
+        if ($result) {
+            return ($userId == $result[0]["userid"]);
+        }
+        else {
+            // No such post with given postid
             return false;
         }
     }
 
     public function postIsAnsweredByUser($postid, $userid) {
+        if ($this->checkIsAuthor($postid, $userid)) {
+            return true;
+        }
         $query = "SELECT Q1Ans, Q2Ans, Q3Ans, Q4Ans FROM bibliohk.postuserinfo 
         WHERE postid = \"{$postid}\" AND userid = \"{$userid}\"";
         $result = $this->database->read($query);
@@ -88,20 +104,8 @@ class Utils {
             }
         }
         else {
+            // No such record with given postid and userid
             return false;
-        }
-    }
-
-    public function test() {
-        $query = "SELECT * FROM bibliohk.users;";
-        $result = $this->database->read($query);
-        // print_r($result);
-        $gender = $result[0]["gender"];
-        if ($gender != null) {
-            echo "it is null";
-        }
-        else {
-            echo "it isn't null";
         }
     }
 }
