@@ -279,7 +279,7 @@
                     </div>    
                 <?php endif; ?>
     
-                <span><a href="home.php"> Home Page </a> >> <a href="ChatRoom.php">Chat Room</a></span>
+                <span><a href="home.php"> Home Page </a> >> <a href="Bibliotheca.php">The Bibliotheca </a> >> <a href="lessthan100.php"> Less than 100 words</a></span>
     
             </div>  
 
