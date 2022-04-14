@@ -19,9 +19,43 @@ class Utils {
         return (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     }
 
-    public function getLastPostIdAndAuthorId($database) {
+    public function getLastPostIdAndAuthorId($database, $category = "default") {
         $postIdAndAuthorId = array();
-        $query = "SELECT TOP 1 * FROM bibliohk.posts ORDER BY date DESC;";
+        $query = "SELECT TOP 1 postid, userid FROM bibliohk.posts";
+        switch ($category) {
+            case "<100":
+            case "<200":
+            case "<300":
+            case "<400":
+            case "<500":
+            case "<600":
+            case "<700":
+            case "<800":
+            case "<900":
+            case "<1000":
+            case "<1200":
+            case "<1500":
+            case "<2000":
+            case ">=2000":
+                $query .= " WHERE category = \"{$category}\"";
+                break;
+            case "bibliotheca":
+                $query .= " WHERE category != \"chatroom\"";
+                // exclude chatroom
+                break;
+            case "bookmark":
+                // exclude chatroom
+                // top 10 bookmark
+                $query .= " WHERE category != \"chatroom\" AND postid IN (
+                    SELECT TOP 10 postid FROM bibliohk.postuserinfo
+                    WHERE bookmarked = 1
+                    GROUP BY postid
+                    ORDER BY COUNT(userid) DESC)";
+                break;
+            default:
+                break;
+        }
+        $query .= " ORDER BY date DESC;";
         $result = $database.read($query);
         $postAndAuthorUrl["postid"] = $result['postid'];
         $postAndAuthorUrl["userid"] = $result['userid'];
