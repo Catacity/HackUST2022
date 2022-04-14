@@ -1,5 +1,7 @@
 <?php
     session_start();
+
+    $_SESSION['BiblioHK_url'] = "BibliothecaPost.php";
     
     include_once("classes/connect.php");
     include_once("classes/login.php");
@@ -268,9 +270,6 @@
                 <br>
 
                 <div class = credit>
-                    <php?
-                        $_SESSION['BiblioHK_url'] = "BibliothecaPost.php";
-                    ?>
                     <div class = "post-stat">20 <a href="Bookmark.php">bookmarked</a></div>
                     <div class = "post-stat"> Written by <?php echo $findname['username'];?></div>
                     <div class = "post-stat"> at <?php echo $result['date'];?></div>
