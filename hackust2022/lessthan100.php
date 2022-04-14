@@ -103,7 +103,10 @@
             <div class="post-row ">
                 <!--- item 1 in the row --->
                 <div class = "post-title subforum-column center">
-                    <a href="BibliothecaPost.php"><?php echo $result[$i]['title'];?></a>   
+                    <?php 
+                        $urlpost = "BibliothecaPost.php?postid=" . $result[$i]["postid"];
+                    ?>
+                    <a href=<?php echo $urlpost;?>><?php echo $result[$i]['title'];?></a>   
                 </div>
                 <!--- item 2 in the row --->
                 <div class= "post-author post-column">
@@ -111,9 +114,10 @@
                     <?php 
                         $tempid = $result[$i]['userid'];
                         $username = $users->get_data($tempid);
+                        $urluser = "Profile.php?userid=" . $result[$i]["userid"];
                     ?>
 
-                    <h1><a href="Profile.php"><?php echo $username['username'] ?></a></h1>                      
+                    <h1><a href=<?php echo $urluser;?>><?php echo $username['username'] ?></a></h1>                      
                 </div> 
                 <!--- item 3 in the row --->
                 <div class = "post-stats post-column center">

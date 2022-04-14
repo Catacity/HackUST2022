@@ -23,9 +23,11 @@
     //     die;
     // }
 
-    $users = new User();
+    $users = new User($database);
     
     $result = $users->get_data($userid);
+    #echo $result;
+    #print_r($result);
 
     $username = "";
     $gender = "";

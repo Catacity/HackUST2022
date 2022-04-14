@@ -13,6 +13,13 @@
         die;
     }
 
+    $url_components = parse_url(Utils::getCurrentUrl());
+    if (array_key_exists('query', $url_components)) {
+        // Url parameters exist
+        parse_str($url_components['query'], $params);
+        $_SESSION['BiblioHK_postid']= $params['postid'];
+    }
+
     $post = new post($database);
     
     $result = $post->get_data($_SESSION['BiblioHK_postid']);
@@ -81,7 +88,7 @@
         $Q4Option3 = $result['Q4Option3'];
         $Q4Option4 = $result['Q4Option4'];
 
-        $user = new User();
+        $user = new User($database);
         $findname = $user->get_data($userid);
 
         $username = "";
@@ -120,10 +127,10 @@
                 echo "</div>";
             }
             
-            $Q1Ans = $_POST['Q1Ans'];
-            $Q2Ans = $_POST['Q1Ans'];
-            $Q3Ans = $_POST['Q1Ans'];
-            $Q4Ans = $_POST['Q1Ans'];
+            $Q1Ans = $_POST['Q1'];
+            $Q2Ans = $_POST['Q2'];
+            $Q3Ans = $_POST['Q3'];
+            $Q4Ans = $_POST['Q4'];
     
         }
     }

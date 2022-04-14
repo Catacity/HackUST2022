@@ -13,6 +13,13 @@
         header("Location: home.php");
         die;
     }
+    
+    $url_components = parse_url(Utils::getCurrentUrl());
+    if (array_key_exists('query', $url_components)) {
+        // Url parameters exist
+        parse_str($url_components['query'], $params);
+        $_SESSION['BiblioHK_postid']= $params['postid'];
+    }
 
     $post = new post($database);
     
@@ -30,7 +37,7 @@
         $userid = $result['userid'];
         $date = $result['date'];
 
-        $user = new User();
+        $user = new User($database);
         $findname = $user->get_data($userid);
 
         $username = "";

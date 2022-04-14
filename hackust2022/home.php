@@ -99,16 +99,17 @@
 
                         $finduser = new User($database);
                         $userinfo = $finduser->get_data($last_post_n_user["userid"]);
-                        $name = $userinfo['username'];
+                        $name1 = $userinfo['username'];
 
                         $findpost = new post($database);
                         $postinfo = $findpost->get_data($last_post_n_user["postid"]);
 
-                        $postdate = $postinfo['date'];
+                        $postdate1 = $postinfo['date'];
+                        $url1 = "Profile.php?userid=" . $last_post_n_user["userid"];
                     ?>
-                    <b><a href="">Last Post</a></b> by <a href="ToLastUserProfileBibliotheca.php"><?php echo $name?></a> 
+                    <b><a href="">Last Post</a></b> by <a href=<?php echo $url1;?>><?php echo $name1?></a> 
                     <!--- The <br> tag inserts a single line break.--->
-                    <br> on <small> <?php echo $postdate;?> </small>
+                    <br> on <small> <?php echo $postdate1;?> </small>
                 </div>
             
             </div>
@@ -122,8 +123,8 @@
                 </div>
                 <!--- item 2 in the row --->
                 <div class= "subforum-description subforum-column">
-                    <h1><a href="Recommendations.php">Recommended reading of the week</a></h1>                        
-                    <p>Here are the top few posts being bookmarked the most this week!</p>
+                    <h1><a href="Recommendations.php">Recommended reading</a></h1>                        
+                    <p>Here are the top few posts being bookmarked the most</p>
                 </div> 
                 <!--- item 3 in the row --->
                 <div class = "subforum-stats subforum-column center">
@@ -131,9 +132,26 @@
                 </div>
                 <!--- item 4 in the row --->
                 <div class= "subforum-info subforum-column">
-                    <b><a href="">Last Post</a></b> by <a href="ToLastUserProfileBookmarked.php">Admin</a> 
+                <?php 
+                        $category = "bookmark";
+                        $last_post_n_user = $utils->getLastPostIdAndAuthorId($category);
+
+                        #print_r($last_post_n_user);
+
+                        $finduser = new User($database);
+                        $userinfo = $finduser->get_data($last_post_n_user["userid"]);
+                        $name2 = $userinfo['username'];
+
+                        $findpost = new post($database);
+                        $postinfo = $findpost->get_data($last_post_n_user["postid"]);
+
+                        $postdate2 = $postinfo['date'];
+                        $url2 = "Profile.php?userid=" . $last_post_n_user["userid"];
+                    ?>
+
+                    <b><a href="">Last Post</a></b> by <a href=<?php echo $url2;?>><?php echo $name2?></a> 
                     <!--- The <br> tag inserts a single line break.--->
-                    <br> on <small> 6/4/2022 </small>
+                    <br> on <small> <?php echo $postdate2;?></small>
                 </div>
             
             </div>
@@ -163,9 +181,25 @@
                     </div>
                     <!--- item 4 in the row --->
                     <div class= "subforum-info subforum-column">
-                        <b><a href="">Last Post</a></b> by <a href="ToLastUserProfileChatroom.php">TestUser</a> 
+                        <?php 
+                            $category = "chatroom";
+                            $last_post_n_user = $utils->getLastPostIdAndAuthorId($category);
+
+                            #print_r($last_post_n_user);
+
+                            $finduser = new User($database);
+                            $userinfo = $finduser->get_data($last_post_n_user["userid"]);
+                            $name3 = $userinfo['username'];
+
+                            $findpost = new post($database);
+                            $postinfo = $findpost->get_data($last_post_n_user["postid"]);
+
+                            $postdate3 = $postinfo['date'];
+                            $url3 = "Profile.php?userid=" . $last_post_n_user["userid"];
+                        ?>
+                        <b><a href="">Last Post</a></b> by <a href= <?php echo $url3;?>><?php echo $name3;?></a> 
                         <!--- The <br> tag inserts a single line break.--->
-                        <br> on <small> 6/4/2022 </small>
+                        <br> on <small> <?php echo $postdate3;?> </small>
                     </div>
 
                 </div>
