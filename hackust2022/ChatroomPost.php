@@ -21,6 +21,7 @@
         $_SESSION['BiblioHK_postid']= $params['postid'];
     }
 
+    $_SESSION['BiblioHK_url'] = "ChatroomPost.php";
     $post = new post($database);
     
     $result = $post->get_data($_SESSION['BiblioHK_postid']);
@@ -211,7 +212,7 @@
 
                 <br>
                 <div class = credit>
-                    <div class = "post-stat">20 bookmarked</div>
+                    <div class = "post-stat">20 <a href="Bookmark.php">bookmarked</a></div>
                     <div class = "post-stat"> Written by <?php echo $findname['username'];?></div>
                     <div class = "post-stat"> at <?php echo $result['date'];?></div>
                 </div>
