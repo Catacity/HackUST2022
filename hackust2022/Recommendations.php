@@ -1,9 +1,22 @@
 <?php
     session_start();
     
-    include("classes/connect.php");
-    include("classes/login.php");
+    include_once("classes/connect.php");
+    include_once("classes/login.php");
+    include_once("classes/category.php");
+    include_once("classes/users.php");
+    include_once("classes/utils.php");
     #print_r($_SESSION);
+
+    $result = $utils->getTopTenBookmarkedPosts();
+    #echo $result;
+    #print_r($result);
+    $users = new User($database);
+    $username = "";
+    #print_r($result);
+    $no_of_posts = count($result);
+
+    $i = 0;
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +57,7 @@
         <div class = "subforum">
             <div class = "subforum-head">
                 <div class = "subforum-title">
-                    <h1>Here are the posts that have been bookmarked the most this week!</h1>    
+                    <h1>Here are the posts that have been bookmarked the most!</h1>    
                 </div>   
 
                 <div class = "subforum-author">
@@ -60,14 +73,25 @@
                 </div>  
             </div>
 
-            <div class="post-row ">
+            <?php while ($i < $no_of_posts): ?>
+                <div class="post-row ">
                 <!--- item 1 in the row --->
                 <div class = "post-title subforum-column center">
-                    <a href="">Test post title hello I'm a decently long title for testing </a>   
+                    <?php 
+                        $urlpost = "BibliothecaPost.php?postid=" . $result[$i]["postid"];
+                    ?>
+                    <a href=<?php echo $urlpost;?>><?php echo $result[$i]['title'];?></a>   
                 </div>
                 <!--- item 2 in the row --->
                 <div class= "post-author post-column">
-                    <h1><a href="Profile.html">Admin</a></h1>                      
+
+                    <?php 
+                        $tempid = $result[$i]['userid'];
+                        $username = $users->get_data($tempid);
+                        $urluser = "Profile.php?userid=" . $result[$i]["userid"];
+                    ?>
+
+                    <h1><a href=<?php echo $urluser;?>><?php echo $username['username'] ?></a></h1>                      
                 </div> 
                 <!--- item 3 in the row --->
                 <div class = "post-stats post-column center">
@@ -75,81 +99,15 @@
                 </div>
                 <!--- item 4 in the row --->
                 <div class= "post-info post-column">
-                    <b><a href="">Last reply</a></b> by <a href="Profile.html">Admin</a> 
+                    <b><a href="">Last reply</a></b> by <a href="Profile.php">Someone</a> 
                     <!--- The <br> tag inserts a single line break.--->
                     <br> on <small> 6/4/2022 </small>
                 </div>
-            
-            </div>
+            </div> 
 
-            <div class="post-row ">
-                <!--- item 1 in the row --->
-                <div class = "post-title subforum-column center">
-                    <a href="">Test post title hello I'm a decently long title for testing </a>   
-                </div>
-                <!--- item 2 in the row --->
-                <div class= "post-author post-column">
-                    <h1><a href="Profile.html">Admin</a></h1>                      
-                </div> 
-                <!--- item 3 in the row --->
-                <div class = "post-stats post-column center">
-                    <span>20 bookmarked</span>
-                </div>
-                <!--- item 4 in the row --->
-                <div class= "post-info post-column">
-                    <b><a href="">Last reply</a></b> by <a href="Profile.html">Admin</a> 
-                    <!--- The <br> tag inserts a single line break.--->
-                    <br> on <small> 6/4/2022 </small>
-                </div>
-            
-            </div>
+            <?php $i = $i + 1 ?>          
+            <?php endwhile; ?>
 
-            <div class="post-row ">
-                <!--- item 1 in the row --->
-                <div class = "post-title subforum-column center">
-                    <a href="">Test post title hello I'm a decently long title for testing </a>   
-                </div>
-                <!--- item 2 in the row --->
-                <div class= "post-author post-column">
-                    <h1><a href="Profile.html">Admin</a></h1>                      
-                </div> 
-                <!--- item 3 in the row --->
-                <div class = "post-stats post-column center">
-                    <span>20 bookmarked</span>
-                </div>
-                <!--- item 4 in the row --->
-                <div class= "post-info post-column">
-                    <b><a href="">Last reply</a></b> by <a href="Profile.html">Admin</a> 
-                    <!--- The <br> tag inserts a single line break.--->
-                    <br> on <small> 6/4/2022 </small>
-                </div>
-            
-            </div>
-
-            <div class="post-row ">
-                <!--- item 1 in the row --->
-                <div class = "post-title subforum-column center">
-                    <a href="">Test post title hello I'm a decently long title for testing </a>   
-                </div>
-                <!--- item 2 in the row --->
-                <div class= "post-author post-column">
-                    <h1><a href="Profile.html">Admin</a></h1>                      
-                </div> 
-                <!--- item 3 in the row --->
-                <div class = "post-stats post-column center">
-                    <span>20 bookmarked</span>
-                </div>
-                <!--- item 4 in the row --->
-                <div class= "post-info post-column">
-                    <b><a href="">Last reply</a></b> by <a href="Profile.html">Admin</a> 
-                    <!--- The <br> tag inserts a single line break.--->
-                    <br> on <small> 6/4/2022 </small>
-                </div>
-            
-            </div>
-
-
-            
         </div>
 
     <script src="main.js"></script>
