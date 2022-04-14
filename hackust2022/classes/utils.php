@@ -166,10 +166,11 @@ class Utils {
     public function getTopTenBookmarkedPosts() {
         $query = "SELECT postid, userid, title FROM bibliohk.posts  
             WHERE category != \"chatroom\" AND postid IN (
+            SELECT * FROM (
             SELECT postid FROM bibliohk.postuserinfo
             WHERE bookmarked = 1
             GROUP BY postid
-            ORDER BY COUNT(userid) DESC LIMIT 10)
+            ORDER BY COUNT(userid) DESC LIMIT 10) temp_tab)
             LIMIT 10;";
         $result = $this->database->read($query);
         return $result;
