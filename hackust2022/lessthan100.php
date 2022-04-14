@@ -82,7 +82,7 @@
         <div class = "subforum">
             <div class = "subforum-head">
                 <div class = "subforum-title">
-                    <h1>Chat Room</h1>    
+                    <h1>Less than 100 words</h1>    
                 </div>   
 
                 <div class = "subforum-author">
